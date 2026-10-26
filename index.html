@@ -10,46 +10,50 @@
 body{margin:0;background:#091322;color:#f1f5f9}
 header{
  background:linear-gradient(135deg,#123c35,#112747);
- text-align:center;padding:26px 12px;
+ text-align:center;padding:25px 12px;
  border-bottom:3px solid #22c55e
 }
-h1{font-size:26px;margin:8px 0}
+h1{font-size:25px}
 h2{font-size:19px;color:#86efac}
-p{line-height:1.5}
-main{max-width:1100px;margin:auto;padding:14px}
+main{max-width:1200px;margin:auto;padding:12px}
 .card{
- background:#152338;border:1px solid #34465c;
- border-radius:12px;padding:16px;margin:14px 0
+ background:#152338;
+ border:1px solid #34465c;
+ border-radius:12px;
+ padding:15px;
+ margin:14px 0
 }
 .green{color:#4ade80}
 .yellow{color:#facc15}
 .red{color:#f87171}
-button,select,input{
+button,select{
+ background:#166534;color:white;
+ border:1px solid #64748b;
  padding:11px;border-radius:8px;
- border:1px solid #64748b;font-size:15px;
- max-width:100%
+ font-size:14px;cursor:pointer
 }
-button{
- background:#16a34a;color:white;
- font-weight:bold;cursor:pointer;margin:4px
-}
-button:disabled{opacity:.5}
-input,select{background:#0f172a;color:white}
+button{margin:4px}
+select{background:#0f172a}
+.scroll{overflow-x:auto}
 table{
- border-collapse:collapse;width:100%;
+ width:100%;border-collapse:collapse;
  min-width:850px;font-size:13px
 }
 th,td{
- padding:11px 7px;border-bottom:1px solid #334155;
+ padding:10px 7px;
+ border-bottom:1px solid #334155;
  text-align:left
 }
-th{background:#204535;color:#fff}
-.scroll{overflow-x:auto}
+th{background:#204535}
+tr:hover{background:#1d3348}
+.small{font-size:13px;color:#cbd5e1}
 .tag{
- display:inline-block;border-radius:7px;
- padding:5px 8px;background:#334155
+ display:inline-block;
+ background:#334155;
+ padding:5px 9px;
+ border-radius:7px
 }
-footer{text-align:center;color:#94a3b8;padding:22px}
+footer{text-align:center;padding:20px;color:#94a3b8}
 </style>
 </head>
 <body>
@@ -57,41 +61,33 @@ footer{text-align:center;color:#94a3b8;padding:22px}
 <header>
 <h1>🇸🇳🧠🔥 MPAA X1000 FUSION</h1>
 <strong>INTELLIGENCE HIPPIQUE M1 À M5</strong>
-<p>Analyse • Pronostics • FIGÉS • Audits</p>
+<p>Programmes PMU • Partants • Analyses • FIGÉS</p>
 <span class="tag">🇫🇷 Heure de Paris</span>
 </header>
 
 <main>
 
 <section class="card">
-<h2>📡 Centre de contrôle</h2>
-<p id="clock">Chargement...</p>
-<p>État : <span id="etat" class="yellow">
-Synchronisation en attente
-</span></p>
-<p id="source">Source PMU : vérification...</p>
+<h2>📡 CENTRE DE CONTRÔLE PMU</h2>
+<p id="clock">Chargement de l'heure...</p>
+<p>Connexion :
+<strong id="etat" class="yellow">EN ATTENTE</strong>
+</p>
+<p id="source">Source : en attente</p>
 <p id="fraicheur"></p>
-<button onclick="synchroniserPMU()">
-Actualiser les données PMU
+<button onclick="synchroniser()">
+🔄 Actualiser les données
 </button>
-<button onclick="exportData()">Exporter les FIGÉS</button>
-</section>
-
-<section class="card">
-<h2>🧠 Les cinq moteurs</h2>
-<p>🟦 M1 — Forme et performances</p>
-<p>🟩 M2 — Aptitudes et conditions</p>
-<p>🟨 M3 — Engagement et entourage</p>
-<p>🟪 M4 — Valeur et potentiel</p>
-<p>🟧 M5 — Régularité et risques</p>
-<p id="etat-moteurs" class="yellow">
-En attente des analyses publiées.
+<p class="small">
+Lecture automatique des fichiers JSON publiés.
+Actualisation de l'affichage toutes les 5 minutes.
 </p>
 </section>
 
 <section class="card">
-<h2>🏇 Programmes PMU</h2>
-<p id="resume-programme">Chargement des réunions...</p>
+<h2>🏇 PROGRAMMES PMU DU JOUR</h2>
+<p id="resume">Chargement des courses...</p>
+
 <div class="scroll">
 <table>
 <thead>
@@ -99,9 +95,11 @@ En attente des analyses publiées.
 <th>Réunion</th>
 <th>Hippodrome</th>
 <th>Course</th>
+<th>Discipline</th>
+<th>Distance</th>
 <th>👥 Partants</th>
-<th>Départ</th>
-<th>Qualification</th>
+<th>Départ Paris</th>
+<th>Contrôle</th>
 </tr>
 </thead>
 <tbody id="programmes"></tbody>
@@ -110,58 +108,48 @@ En attente des analyses publiées.
 </section>
 
 <section class="card">
-<h2>📊 Analyses automatiques M1 à M5</h2>
-<p id="resume-analyses">
-Aucune analyse chargée.
+<h2>🐎 CHEVAUX PARTANTS</h2>
+<p>
+<select id="choix-course" onchange="afficherPartants()">
+<option value="">Choisir une course</option>
+</select>
 </p>
-<div id="details-moteurs"></div>
+<p id="resume-partants"></p>
+<div class="scroll">
+<table>
+<thead>
+<tr>
+<th>N°</th>
+<th>Cheval</th>
+<th>Âge</th>
+<th>Sexe</th>
+<th>Jockey / Driver</th>
+<th>Entraîneur</th>
+<th>Statut</th>
+</tr>
+</thead>
+<tbody id="partants"></tbody>
+</table>
+</div>
 </section>
 
 <section class="card">
-<h2>🏇 Enregistrer une étude vérifiée</h2>
-<p>
-Saisissez une course et les pronostics établis
-avant son départ. Les numéros doivent être
-classés par ordre d'arrivée espéré.
+<h2>🧠 INTELLIGENCE HIPPIQUE M1 À M5</h2>
+<p>🟦 M1 — Forme et performances</p>
+<p>🟩 M2 — Aptitude et conditions</p>
+<p>🟨 M3 — Engagement et compétition</p>
+<p>🟪 M4 — Entourage et potentiel</p>
+<p>🟧 M5 — Régularité et risques</p>
+<p id="etat-moteurs" class="yellow">
+Analyses en attente.
 </p>
-<p>
-<input id="course" placeholder="Ex : R1 C4" maxlength="80">
-<input id="hippo" placeholder="Hippodrome" maxlength="80">
-</p>
-<p>
-<input id="depart" type="datetime-local">
-<input id="partants" type="number" min="1"
-placeholder="Nombre de partants">
-</p>
-<p>
-<select id="moteur">
-<option>M1</option>
-<option>M2</option>
-<option>M3</option>
-<option>M4</option>
-<option>M5</option>
-</select>
-<input id="ordre" placeholder="Ordre : 4-8-2-7-1">
-</p>
-<p>
-<select id="pari">
-<option>Simple Gagnant</option>
-<option>Simple Placé</option>
-<option>Couplé</option>
-<option>Trio</option>
-<option>Quarté+</option>
-<option>Quinté+</option>
-<option>Multi</option>
-<option>2sur4</option>
-<option>Autre pari PMU</option>
-</select>
-</p>
-<button onclick="ajouter()">Ajouter au tableau</button>
-<p id="message" class="yellow"></p>
 </section>
 
 <section class="card">
 <h2>📊 TABLEAU OFFICIEL X1000</h2>
+<p id="resume-analyses">
+Chargement des analyses...
+</p>
 <div class="scroll">
 <table>
 <thead>
@@ -172,7 +160,7 @@ placeholder="Nombre de partants">
 <th>🥇 Gagnant espéré</th>
 <th>🥈 Meilleur placé</th>
 <th>Ordre d'arrivée espéré</th>
-<th>🎯 Pari</th>
+<th>🎯 Pari retenu</th>
 <th>Qualification</th>
 <th>Validation</th>
 <th>Heure Paris</th>
@@ -184,34 +172,26 @@ placeholder="Nombre de partants">
 </section>
 
 <section class="card">
-<h2>🔒 Registre des FIGÉS</h2>
-<p>
-Un FIGÉ local conserve le pronostic enregistré
-avant le départ déclaré.
+<h2>🔒 CONTRÔLE DES FIGÉS</h2>
+<p id="figes">
+Aucun FIGÉ automatique vérifié.
 </p>
-<div id="registre">Aucun FIGÉ enregistré.</div>
+<p class="small">
+Un FIGÉ doit être enregistré avant le départ
+de la course. Aucun pronostic n'est inventé
+lorsque les données sportives sont insuffisantes.
+</p>
 </section>
 
 <section class="card">
-<h2>🛡️ Contrôle et transparence</h2>
-<p>🟢 Données PMU reçues et récentes</p>
-<p>🟡 Données incomplètes ou non vérifiées</p>
-<p>🔴 Données indisponibles ou périmées</p>
-<p>
-Les analyses automatiques ne doivent pas être
-confondues avec des pronostics validés.
-</p>
-<p>
-Aucun FIGÉ automatique n'est fabriqué à partir
-de données insuffisantes.
-</p>
-<p>
-Les FIGÉS manuels sont conservés dans ce navigateur
-uniquement. Ils ne sont pas synchronisés entre appareils.
-</p>
-<p>
-Les arrivées officielles doivent être vérifiées
-avant tout audit.
+<h2>🛡️ FIABILITÉ DES DONNÉES</h2>
+<p>🟢 Données disponibles et vérifiées</p>
+<p>🟡 Données partielles ou insuffisantes</p>
+<p>🔴 Données absentes ou invalides</p>
+<p class="small">
+Les pronostics ne garantissent aucun résultat.
+Les données PMU doivent être contrôlées
+avant toute décision de pari.
 </p>
 </section>
 
@@ -219,345 +199,447 @@ avant tout audit.
 
 <footer>
 🇸🇳🧠🔥 MPAA X1000 FUSION
-<p>Version 2.0 — Interface PMU synchronisée</p>
-<p>Aucun gain ni résultat garanti.</p>
+<p>Connexion PMU et affichage automatique</p>
 </footer>
 
 <script>
 "use strict";
 
-const KEY="mpaa_x1000_figes_v1";
-const MAX_AGE_MS=90*60*1000;
-let figes=[];
-let programmes=[];
-let analyses=null;
-
-try {
- const saved=JSON.parse(localStorage.getItem(KEY)||"[]");
- if(Array.isArray(saved)) figes=saved;
-} catch(e) {
- console.warn("Stockage indisponible",e);
-}
+let coursesPMU=[];
+let analysesPMU=null;
+const DELAI_FRAICHEUR=90*60*1000;
 
 function el(id){
  return document.getElementById(id);
 }
 
-function val(id){
- return el(id).value.trim();
-}
+function heureParis(value){
+ if(value===null||value===undefined||value===""){
+  return "—";
+ }
 
-function message(txt){
- el("message").textContent=txt;
-}
+ let date;
 
-function parisTime(date){
- const d=new Date(date);
- if(!Number.isFinite(d.getTime())) return "—";
+ if(typeof value==="number"){
+  date=new Date(value>1e12?value:value*1000);
+ }else{
+  date=new Date(value);
+ }
+
+ if(!Number.isFinite(date.getTime())){
+  return "—";
+ }
+
  return new Intl.DateTimeFormat("fr-FR",{
   timeZone:"Europe/Paris",
   dateStyle:"short",
-  timeStyle:"medium"
- }).format(d);
+  timeStyle:"short"
+ }).format(date);
 }
 
 function horloge(){
  el("clock").textContent=
-  "🇫🇷 Heure de Paris : "+parisTime(new Date());
+  "🇫🇷 Heure de Paris : "+heureParis(Date.now());
 }
 
-horloge();
 setInterval(horloge,1000);
+horloge();
 
-function cell(tr,value){
+function cellule(tr,valeur){
  const td=document.createElement("td");
- td.textContent=String(value??"—");
+ td.textContent=String(valeur??"—");
  tr.appendChild(td);
 }
 
-function save(){
- try {
-  localStorage.setItem(KEY,JSON.stringify(figes));
-  return true;
- } catch(e) {
-  message("Stockage indisponible. Exportez vos données.");
-  return false;
- }
+function vider(id){
+ el(id).replaceChildren();
 }
 
-function ajouter(){
- const course=val("course");
- const hippo=val("hippo");
- const depart=val("depart");
- const partants=Number(val("partants"));
- const moteur=val("moteur");
- const pari=val("pari");
-
- const nums=val("ordre")
-  .split(/[\s,;-]+/)
-  .filter(Boolean)
-  .map(Number);
-
- if(!course||!hippo||!depart||
-    !Number.isInteger(partants)||partants<1){
-  message("Complétez la course, le lieu, le départ et les partants.");
-  return;
- }
-
- if(!nums.length||
-    nums.some(n=>!Number.isInteger(n)||n<1)||
-    new Set(nums).size!==nums.length||
-    nums.length>partants){
-  message("Numéros de chevaux invalides ou répétés.");
-  return;
- }
-
- const start=new Date(depart);
- const now=new Date();
-
- if(!Number.isFinite(start.getTime())||start<=now){
-  message("FIGÉ refusé : départ déclaré déjà passé.");
-  return;
- }
-
- if(figes.some(f=>
-    f.course===course &&
-    f.hippo===hippo &&
-    f.depart===depart &&
-    f.moteur===moteur)){
-  message("Un FIGÉ existe déjà pour cette course et ce moteur.");
-  return;
- }
-
- const record={
-  id:globalThis.crypto?.randomUUID?.()||
-     String(Date.now())+"-"+Math.random(),
-  course,hippo,depart,partants,moteur,
-  ordre:nums,pari,
-  createdAt:now.toISOString(),
-  statut:"FIGÉ LOCAL — NON VÉRIFIÉ"
- };
-
- figes.push(record);
- save();
- render();
- message("FIGÉ local enregistré. Vérification externe requise.");
-}
-
-function render(){
- const tbody=el("tableau");
- tbody.replaceChildren();
-
- const sorted=[...figes].sort(
-  (a,b)=>new Date(a.depart)-new Date(b.depart)
- );
-
- for(const f of sorted){
-  const tr=document.createElement("tr");
-  const ordre=Array.isArray(f.ordre)?f.ordre:[];
-  cell(tr,(f.hippo||"")+" "+(f.course||""));
-  cell(tr,f.partants);
-  cell(tr,f.moteur);
-  cell(tr,ordre[0]??"—");
-  cell(tr,ordre[1]??"—");
-  cell(tr,ordre.join(" - "));
-  cell(tr,f.pari);
-  cell(tr,"🟡 Non vérifiée");
-  cell(tr,"🔒 FIGÉ local");
-  cell(tr,parisTime(f.createdAt));
-  tbody.appendChild(tr);
- }
-
- if(!sorted.length){
-  const tr=document.createElement("tr");
-  const td=document.createElement("td");
-  td.colSpan=10;
-  td.textContent="Aucun FIGÉ enregistré.";
-  tr.appendChild(td);
-  tbody.appendChild(tr);
- }
-
- el("registre").textContent=
-  sorted.length+" FIGÉ(S) enregistré(s) localement.";
-}
-
-function exportData(){
- const data=JSON.stringify({
-  logiciel:"MPAA X1000 FUSION",
-  exportedAt:new Date().toISOString(),
-  figes
- },null,2);
-
- const blob=new Blob([data],{
-  type:"application/json"
- });
- const url=URL.createObjectURL(blob);
- const a=document.createElement("a");
- a.href=url;
- a.download="mpaa-x1000-figes.json";
- document.body.appendChild(a);
- a.click();
- a.remove();
- setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
-
-async function lireJSON(chemin){
+async function chargerJSON(chemin){
  const url=new URL(chemin,document.baseURI);
- url.searchParams.set("t",Date.now());
+ url.searchParams.set("v",Date.now());
 
  const reponse=await fetch(url,{
   cache:"no-store"
  });
 
  if(!reponse.ok){
-  throw new Error(chemin+" : HTTP "+reponse.status);
+  throw new Error(
+   chemin+" : HTTP "+reponse.status
+  );
  }
 
- return reponse.json();
+ return await reponse.json();
 }
 
-function afficherProgrammes(reunions){
- const tbody=el("programmes");
- tbody.replaceChildren();
- let total=0;
+function afficherCourses(){
+ vider("programmes");
 
- for(const reunion of reunions){
-  if(!reunion||typeof reunion!=="object") continue;
+ const select=el("choix-course");
+ const selection=select.value;
+ select.replaceChildren();
 
-  const hippo=reunion.hippodrome||{};
-  const nom=hippo.libelleCourt||
-    hippo.libelleLong||"Inconnu";
+ const option=document.createElement("option");
+ option.value="";
+ option.textContent="Choisir une course";
+ select.appendChild(option);
 
-  const courses=Array.isArray(reunion.courses)
-    ?reunion.courses:[];
+ const reunions=new Set();
 
-  for(const course of courses){
-   if(!course||typeof course!=="object") continue;
-   total++;
+ const triees=[...coursesPMU].sort((a,b)=>{
+  const x=Number(a.heure_depart_timestamp)||0;
+  const y=Number(b.heure_depart_timestamp)||0;
+  return x-y;
+ });
 
-   const tr=document.createElement("tr");
-   cell(tr,"R"+(reunion.numOfficiel??"?"));
-   cell(tr,nom);
-   cell(tr,"C"+(course.numOrdre??"?"));
-   cell(tr,course.nombreDeclaresPartants??"—");
+ triees.forEach((course,index)=>{
+  const tr=document.createElement("tr");
 
-   let depart="—";
-   if(typeof course.heureDepart==="number"){
-    depart=parisTime(course.heureDepart*1000);
-   }else if(typeof course.heureDepart==="string"){
-    depart=parisTime(course.heureDepart);
-   }
+  reunions.add(course.reunion);
 
-   cell(tr,depart);
-   cell(tr,"🟡 À étudier");
-   tbody.appendChild(tr);
-  }
- }
+  cellule(tr,"R"+(course.reunion??"?"));
+  cellule(tr,course.hippodrome||"Inconnu");
+  cellule(
+   tr,
+   "C"+(course.course??"?")+
+   " "+(course.nom||"")
+  );
+  cellule(tr,course.discipline||"—");
+  cellule(
+   tr,
+   course.distance!=null
+    ?course.distance+" m":"—"
+  );
 
- if(!total){
+  const liste=Array.isArray(course.participants)
+   ?course.participants:[];
+
+  const actifs=liste.filter(
+   p=>p&&p.non_partant!==true
+  );
+
+  cellule(
+   tr,
+   course.participants_verifies===true
+    ?actifs.length
+    :(course.nombre_partants??"—")
+  );
+
+  cellule(
+   tr,
+   heureParis(course.heure_depart_timestamp)
+  );
+
+  cellule(
+   tr,
+   course.participants_verifies===true
+    ?"🟢 Participants reçus"
+    :"🟡 À vérifier"
+  );
+
+  el("programmes").appendChild(tr);
+
+  const choix=document.createElement("option");
+  choix.value=String(index);
+  choix.textContent=
+   "R"+course.reunion+
+   " C"+course.course+
+   " — "+course.hippodrome;
+
+  choix.dataset.id=course.id||"";
+  select.appendChild(choix);
+ });
+
+ if(!triees.length){
   const tr=document.createElement("tr");
   const td=document.createElement("td");
-  td.colSpan=6;
+  td.colSpan=8;
   td.textContent="Aucune course disponible.";
   tr.appendChild(td);
-  tbody.appendChild(tr);
+  el("programmes").appendChild(tr);
  }
 
- el("resume-programme").textContent=
-  reunions.length+" réunion(s) et "+total+
-  " course(s) inventoriée(s).";
+ el("resume").textContent=
+  reunions.size+" réunion(s) — "+
+  triees.length+" course(s)";
+
+ // Les indices du sélecteur correspondent
+ // exactement au tableau trié.
+ coursesPMU=triees;
+
+ if(selection&&Number(selection)<triees.length){
+  select.value=selection;
+ }
+
+ afficherPartants();
+}
+
+function afficherPartants(){
+ vider("partants");
+
+ const index=el("choix-course").value;
+
+ if(index===""){
+  el("resume-partants").textContent=
+   "Sélectionnez une course.";
+  return;
+ }
+
+ const course=coursesPMU[Number(index)];
+
+ if(!course){
+  return;
+ }
+
+ const liste=Array.isArray(course.participants)
+  ?course.participants:[];
+
+ const triee=[...liste].sort(
+  (a,b)=>(Number(a.numero)||0)-
+        (Number(b.numero)||0)
+ );
+
+ const nonPartants=triee.filter(
+  p=>p&&p.non_partant===true
+ ).length;
+
+ el("resume-partants").textContent=
+  triee.length+" chevaux déclarés — "+
+  nonPartants+" non-partant(s)"+
+  (course.participants_verifies===true
+   ?" — Liste reçue":" — Liste non vérifiée");
+
+ for(const cheval of triee){
+  if(!cheval||typeof cheval!=="object"){
+   continue;
+  }
+
+  const tr=document.createElement("tr");
+  cellule(tr,cheval.numero);
+  cellule(tr,cheval.nom||"—");
+  cellule(tr,cheval.age);
+  cellule(tr,cheval.sexe||"—");
+  cellule(tr,cheval.jockey||"—");
+  cellule(tr,cheval.entraineur||"—");
+  cellule(
+   tr,
+   cheval.non_partant===true
+    ?"🔴 Non-partant":"🟢 Déclaré"
+  );
+  el("partants").appendChild(tr);
+ }
 }
 
 function afficherAnalyses(data){
- const panneau=el("details-moteurs");
- panneau.replaceChildren();
+ vider("tableau");
 
- const moteurs=data.moteurs||{};
  const courses=Array.isArray(data.courses)
   ?data.courses:[];
 
- el("resume-analyses").textContent=
-  "Courses inventoriées : "+courses.length+
-  " | Statut : "+(data.statut||"INCONNU");
+ let nombreFiges=0;
+ let nombreMoteurs=0;
 
- for(const [nom,moteur] of Object.entries(moteurs)){
-  const ligne=document.createElement("p");
-  ligne.textContent=
-   nom+" — "+(moteur.specialite||"Analyse")+
-   " : "+(moteur.statut||"INCONNU");
-  panneau.appendChild(ligne);
+ for(const course of courses){
+  const moteurs=Array.isArray(course.moteurs)
+   ?course.moteurs:[];
+
+  for(const moteur of moteurs){
+   nombreMoteurs++;
+
+   const tr=document.createElement("tr");
+   const ordre=Array.isArray(
+    moteur.ordre_arrivee_espere
+   )?moteur.ordre_arrivee_espere:[];
+
+   const valide=moteur.validation===true;
+   const fige=moteur.fige===true;
+
+   if(valide&&fige){
+    nombreFiges++;
+   }
+
+   cellule(
+    tr,
+    course.hippodrome+" "+course.id
+   );
+
+   cellule(
+    tr,
+    course.partants_verifies??
+    course.partants_annonces
+   );
+
+   cellule(tr,moteur.moteur||"—");
+
+   cellule(
+    tr,
+    moteur.gagnant_espere??"—"
+   );
+
+   cellule(
+    tr,
+    moteur.meilleur_place??"—"
+   );
+
+   cellule(
+    tr,
+    ordre.length?ordre.join(" - "):"—"
+   );
+
+   cellule(
+    tr,
+    moteur.pari_retenu||"—"
+   );
+
+   cellule(
+    tr,
+    moteur.qualification||"🟡 À étudier"
+   );
+
+   cellule(
+    tr,
+    valide
+     ?(fige?"🔒 FIGÉ":"🟢 Validé")
+     :"🟡 Non validé"
+   );
+
+   cellule(
+    tr,
+    heureParis(course.depart_paris)
+   );
+
+   el("tableau").appendChild(tr);
+  }
  }
 
+ if(!nombreMoteurs){
+  const tr=document.createElement("tr");
+  const td=document.createElement("td");
+  td.colSpan=10;
+  td.textContent=
+   "Aucune analyse M1–M5 disponible.";
+  tr.appendChild(td);
+  el("tableau").appendChild(tr);
+ }
+
+ el("resume-analyses").textContent=
+  courses.length+" course(s) analysée(s) — "+
+  nombreMoteurs+" contrôle(s) moteur";
+
  el("etat-moteurs").textContent=
-  "Données d'analyse chargées. "+
-  "Pronostics uniquement si calculés et vérifiés.";
+  "🧠 Analyses M1 à M5 chargées — "+
+  "statut : "+(data.statut||"INCONNU");
+
+ el("figes").textContent=
+  nombreFiges+" FIGÉ(S) validé(s) déclaré(s)"+
+  " dans le fichier d'analyse.";
 }
 
-async function synchroniserPMU(){
- const source=el("source");
+async function synchroniser(){
  const etat=el("etat");
+ const source=el("source");
 
- etat.textContent="Synchronisation en cours...";
+ etat.textContent="SYNCHRONISATION...";
  etat.className="yellow";
 
  try{
-  const data=await lireJSON("data/programme_pmu.json");
+  const data=await chargerJSON(
+   "data/programme_pmu.json"
+  );
 
-  if(data.statut!=="DONNEES_RECUES"||
-     !Array.isArray(data.reunions)){
-   throw new Error("Programme PMU non valide");
+  if(
+   !Array.isArray(data.courses)||
+   !["OK","PARTIEL"].includes(data.statut)
+  ){
+   throw new Error(
+    "Format de programme PMU invalide"
+   );
   }
 
-  programmes=data.reunions;
-  afficherProgrammes(programmes);
-
-  source.textContent=
-   "PMU : "+programmes.length+
-   " réunion(s) | Collecte : "+
-   parisTime(data.heure_collecte);
-
-  const dateCollecte=new Date(data.heure_collecte);
+  const dateCollecte=new Date(data.mise_a_jour);
   const age=Date.now()-dateCollecte.getTime();
 
-  const recente=Number.isFinite(age)&&
-    age>=0&&age<=MAX_AGE_MS;
+  const frais=Number.isFinite(age)&&
+   age>=0&&age<=DELAI_FRAICHEUR;
 
-  el("fraicheur").textContent=recente
-   ?"🟢 Collecte récente"
-   :"🟡 Collecte ancienne ou date inconnue";
+  const dateParis=new Intl.DateTimeFormat(
+   "en-CA",{
+    timeZone:"Europe/Paris",
+    year:"numeric",
+    month:"2-digit",
+    day:"2-digit"
+   }
+  ).format(new Date());
 
-  etat.textContent=recente
-   ?"DONNÉES PMU REÇUES"
-   :"DONNÉES PMU À ACTUALISER";
-  etat.className=recente?"green":"yellow";
-  source.className=recente?"green":"yellow";
+  const bonneDate=data.date===dateParis;
+
+  coursesPMU=data.courses;
+  afficherCourses();
+
+  source.textContent=
+   "Source : "+(data.source||"PMU")+
+   " | Collecte : "+heureParis(data.mise_a_jour);
+
+  if(frais&&bonneDate&&data.statut==="OK"){
+   etat.textContent="🟢 PMU CONNECTÉ";
+   etat.className="green";
+  }else{
+   etat.textContent="🟡 DONNÉES À CONTRÔLER";
+   etat.className="yellow";
+  }
+
+  el("fraicheur").textContent=
+   "Statut collecte : "+data.statut+
+   " | Participants vérifiés : "+
+   (data.courses_participants_verifies??"—")+
+   " / "+data.courses.length+
+   (frais&&bonneDate
+    ?" | Données récentes"
+    :" | Données anciennes ou hors date");
 
  }catch(erreur){
-  etat.textContent="CONNEXION INDISPONIBLE";
+  etat.textContent="🔴 PMU INDISPONIBLE";
   etat.className="red";
-  source.textContent="PMU : "+erreur.message;
-  source.className="red";
+
+  source.textContent=erreur.message;
+
   el("fraicheur").textContent=
-   "Vérifiez la publication du fichier JSON.";
+   "Vérifiez data/programme_pmu.json "+
+   "et GitHub Actions.";
+
+  coursesPMU=[];
+  afficherCourses();
  }
 
  try{
-  analyses=await lireJSON("data/analyses_moteurs.json");
-  afficherAnalyses(analyses);
+  analysesPMU=await chargerJSON(
+   "data/analyses_moteurs.json"
+  );
+
+  afficherAnalyses(analysesPMU);
+
  }catch(erreur){
+  vider("tableau");
+
   el("resume-analyses").textContent=
-   "Analyses non disponibles : "+erreur.message;
+   "Analyses indisponibles : "+
+   erreur.message;
+
   el("etat-moteurs").textContent=
-   "🟡 En attente du fichier analyses_moteurs.json";
-  el("details-moteurs").replaceChildren();
+   "🟡 En attente du fichier "+
+   "analyses_moteurs.json";
+
+  el("figes").textContent=
+   "Aucun FIGÉ automatique vérifié.";
  }
 }
 
-render();
-synchroniserPMU();
-setInterval(synchroniserPMU,300000);
-</script>
+synchroniser();
 
+// Actualisation de l'affichage
+// toutes les cinq minutes.
+setInterval(synchroniser,300000);
+
+</script>
 </body>
-  </html>
-  
+</html>
