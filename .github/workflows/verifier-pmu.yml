@@ -1,32 +1,60 @@
-name: MPAA X1000 - Verification PMU
+name: MPAA X1000 - PMU Automatique
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '*/30 6-22 * * *'
 
 permissions:
-  contents: read
+  contents: write
+
+concurrency:
+  group: mpaa-x1000-pmu
+  cancel-in-progress: false
 
 jobs:
   verification-pmu:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
 
     steps:
       - name: Recuperer les fichiers
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Installer Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Tester les donnees PMU
+      - name: Collecter les donnees PMU
         run: python scripts/collecte_pmu.py
+
+      - name: Analyser les courses M1 a M5
+        run: python scripts/analyse_moteurs.py
+
+      - name: Publier les donnees
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/programme_pmu.json
+          git add data/analyses_moteurs.json
+
+          if ! git diff --cached --quiet; then
+            git commit -m "Actualisation PMU X1000"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
 
       - name: Conserver le diagnostic
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: diagnostic-pmu
-          path: data/programme_pmu.json
+          path: |
+            data/programme_pmu.json
+            data/analyses_moteurs.json
           if-no-files-found: warn
+          
