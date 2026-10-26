@@ -1,167 +1,381 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-"""MPAA X1000 FUSION — analyse M1 à M5.
+"""
+MPAA X1000 FUSION — ANALYSE UNIFIEE M1 A M5
 
-Entrée : data/programme_pmu.json
-Sortie : data/analyses_moteurs.json
+Entree :
+    data/programme_pmu.json
 
-Aucun indicateur sportif inventé.
-Aucun FIGÉ rétroactif.
+Sortie :
+    data/analyses_moteurs.json
+
+Principes :
+- Donnees reelles uniquement.
+- Aucun score sportif invente.
+- Cinq moteurs independants.
+- Aucun pronostic retroactif.
+- Aucun FIGE automatique dans ce module.
+- Aucun pari reellement place.
+- Classements indicatifs, non garantis.
+
+Compatible Python 3.12 et GitHub Actions.
 """
 
 import argparse
 import json
 import math
 import os
+import re
 import sys
+
 from datetime import datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+
 PARIS = ZoneInfo("Europe/Paris")
 
+SOURCE = Path("data/programme_pmu.json")
+SORTIE = Path("data/analyses_moteurs.json")
+
 MOTEURS = {
-    "M1": ("Forme et performances", [
+    "M1": "Forme recente et performances",
+    "M2": "Aptitude distance et discipline",
+    "M3": "Engagement et gains",
+    "M4": "Entourage et potentiel",
+    "M5": "Regularite et fiabilite",
+}
+
+# Champs de scores eventuellement disponibles.
+# Ils ne sont jamais crees artificiellement.
+CRITERES = {
+    "M1": [
         ("score_forme", 3),
         ("score_performances", 2),
         ("taux_victoire", 1),
-    ]),
-    "M2": ("Aptitude et conditions", [
+    ],
+    "M2": [
         ("score_aptitude", 3),
         ("score_distance", 2),
         ("score_terrain", 2),
-    ]),
-    "M3": ("Engagement et compétition", [
+    ],
+    "M3": [
         ("score_engagement", 3),
         ("score_competition", 2),
         ("score_classe", 2),
-    ]),
-    "M4": ("Entourage et potentiel", [
+    ],
+    "M4": [
         ("score_jockey", 2),
         ("score_entraineur", 2),
         ("score_entourage", 2),
-    ]),
-    "M5": ("Régularité et risques", [
+    ],
+    "M5": [
         ("score_regularite", 3),
         ("score_fiabilite", 2),
         ("score_forme", 1),
-    ]),
+    ],
 }
 
 
-def lire(chemin):
+def lire_json(chemin):
+    """Lecture JSON avec detection des cles dupliquees."""
+
     def verifier(paires):
         resultat = {}
+
         for cle, valeur in paires:
             if cle in resultat:
                 raise ValueError(
-                    "Clé JSON dupliquée : " + cle
+                    "Cle JSON dupliquee : " + cle
                 )
             resultat[cle] = valeur
+
         return resultat
 
-    with open(chemin, encoding="utf-8") as f:
+    with open(chemin, encoding="utf-8") as fichier:
         return json.load(
-            f, object_pairs_hook=verifier
+            fichier,
+            object_pairs_hook=verifier
         )
 
 
-def ecrire(chemin, donnees):
+def ecrire_json(chemin, donnees):
+    """Ecriture atomique du fichier de sortie."""
+
     chemin = Path(chemin)
     chemin.parent.mkdir(
-        parents=True, exist_ok=True
+        parents=True,
+        exist_ok=True
     )
+
     temporaire = chemin.with_name(
         chemin.name + ".tmp"
     )
+
     try:
         with temporaire.open(
-            "w", encoding="utf-8"
-        ) as f:
+            "w",
+            encoding="utf-8"
+        ) as fichier:
             json.dump(
-                donnees, f,
+                donnees,
+                fichier,
                 ensure_ascii=False,
                 indent=2,
                 allow_nan=False
             )
-            f.write("\n")
+            fichier.write("\n")
+
         os.replace(temporaire, chemin)
+
     finally:
         if temporaire.exists():
             temporaire.unlink()
 
 
-def depart_paris(valeur):
+def nombre(valeur):
+    """Conversion numerique sans valeur inventee."""
+
     if isinstance(valeur, bool) or valeur is None:
         return None
+
+    try:
+        texte = str(valeur).replace(
+            " ", ""
+        ).replace(",", ".")
+
+        resultat = float(texte)
+
+        if math.isfinite(resultat):
+            return resultat
+
+    except (ValueError, TypeError):
+        pass
+
+    return None
+
+
+def entier_positif(valeur):
+    """Numero PMU strictement positif."""
+
+    if isinstance(valeur, bool):
+        return None
+
+    try:
+        n = int(valeur)
+
+        if n > 0 and str(valeur).strip() == str(n):
+            return n
+
+    except (ValueError, TypeError):
+        pass
+
+    return None
+
+
+def depart_paris(valeur):
+    """Convertit un depart ISO ou timestamp en heure Paris."""
+
     try:
         if isinstance(valeur, str) and (
             "T" in valeur or "-" in valeur
         ):
-            d = datetime.fromisoformat(
+            date = datetime.fromisoformat(
                 valeur.replace("Z", "+00:00")
             )
-            if d.tzinfo is None:
-                return None
-            return d.astimezone(PARIS)
 
-        n = float(valeur)
-        if not math.isfinite(n) or n <= 0:
+            if date.tzinfo is None:
+                return None
+
+            return date.astimezone(PARIS)
+
+        timestamp = nombre(valeur)
+
+        if timestamp is None or timestamp <= 0:
             return None
 
-        if n > 1e12:
-            n /= 1000
+        if timestamp > 1e12:
+            timestamp /= 1000
 
         return datetime.fromtimestamp(
-            n, timezone.utc
+            timestamp,
+            timezone.utc
         ).astimezone(PARIS)
 
     except (
-        ValueError, TypeError,
-        OverflowError, OSError
+        ValueError,
+        TypeError,
+        OverflowError,
+        OSError
     ):
         return None
 
 
-def numero_positif(valeur):
-    if isinstance(valeur, bool):
+def musique(cheval, discipline=None):
+    """
+    Extrait des places lisibles dans la musique PMU.
+
+    Exemples :
+        1a 3a 2a
+        4p 2p 1p
+        3m 1m 5m
+
+    Les classements 0, les disqualifications,
+    les arrets et les incidents ne sont pas
+    transformes en bonnes performances.
+
+    Les historiques incomplets sont signales.
+    """
+
+    brute = cheval.get("musique")
+
+    if not isinstance(brute, str):
+        return []
+
+    texte = brute.lower().strip()
+
+    # Un classement de 10e ou plus n'est pas
+    # interprete comme 1er ou 2e.
+    motif = r"(?<![0-9a-z])([1-9]|1[0-9]|20)([apmho])"
+
+    resultats = []
+
+    for correspondance in re.finditer(
+        motif,
+        texte
+    ):
+        place = int(correspondance.group(1))
+        code = correspondance.group(2)
+
+        resultats.append({
+            "place": place,
+            "discipline": code
+        })
+
+    return resultats
+
+
+def gains_carriere(cheval):
+    """Gains publies, sans estimation."""
+
+    valeur = nombre(
+        cheval.get("gains_carriere")
+    )
+
+    if valeur is None or valeur < 0:
         return None
-    try:
-        n = int(valeur)
-        if n > 0 and str(valeur).strip() == str(n):
-            return n
-    except (ValueError, TypeError):
-        pass
+
+    return valeur
+
+
+def score_documente(cheval, moteur):
+    """
+    Accepte des scores deja fournis uniquement
+    avec une provenance explicite.
+
+    Aucune transformation automatique des noms
+    de jockeys ou des conditions de course en score.
+    """
+
+    provenance = cheval.get(
+        "source_indicateurs"
+    )
+
+    if not isinstance(provenance, str):
+        return None
+
+    if not provenance.strip():
+        return None
+
+    valeurs = []
+
+    for champ, poids in CRITERES[moteur]:
+        valeur = nombre(
+            cheval.get(champ)
+        )
+
+        if valeur is not None and 0 <= valeur <= 100:
+            valeurs.append(
+                (valeur, poids)
+            )
+
+    if len(valeurs) < 2:
+        return None
+
+    total_poids = sum(
+        poids for _, poids in valeurs
+    )
+
+    score = sum(
+        valeur * poids
+        for valeur, poids in valeurs
+    ) / total_poids
+
+    return (
+        score,
+        "Scores fournis : " + provenance.strip()
+    )
+
+
+def calculer_indicateur(cheval, moteur):
+    """
+    Retourne (valeur, explication).
+
+    Ne compare pas des scores de provenance
+    differente au sein d'une meme course.
+    """
+
+    # M1 : trois dernieres places exploitables.
+    if moteur == "M1":
+        places = musique(cheval)
+
+        if len(places) >= 3:
+            trois = [
+                x["place"] for x in places[:3]
+            ]
+
+            # Plus la moyenne est faible,
+            # meilleur est l'indicateur descriptif.
+            return (
+                -sum(trois) / 3,
+                "Moyenne des 3 premieres places lisibles"
+            )
+
+    # M5 : cinq places exploitables.
+    if moteur == "M5":
+        places = musique(cheval)
+
+        if len(places) >= 5:
+            cinq = [
+                x["place"] for x in places[:5]
+            ]
+
+            return (
+                -sum(cinq) / 5,
+                "Moyenne des 5 premieres places lisibles"
+            )
+
+    # M3 : gains de carriere connus.
+    if moteur == "M3":
+        gains = gains_carriere(cheval)
+
+        if gains is not None:
+            return (
+                gains,
+                "Gains de carriere publies"
+            )
+
+    # M2 et M4 ne peuvent pas etre calcules
+    # a partir d'une simple distance ou d'un nom.
     return None
 
 
-def indicateur(cheval, champ):
-    valeur = cheval.get(champ)
-
-    if isinstance(valeur, bool) or valeur is None:
-        return None
-
-    try:
-        n = float(valeur)
-        if math.isfinite(n) and 0 <= n <= 100:
-            return n
-    except (ValueError, TypeError):
-        pass
-
-    return None
-
-
-def analyser_moteur(chevaux, moteur, problemes):
-    specialite, criteres = MOTEURS[moteur]
-
-    resultat = {
+def base_moteur(moteur):
+    return {
         "moteur": moteur,
-        "specialite": specialite,
-        "qualification": (
-            "🔴 EXCLU" if problemes
-            else "🟡 DONNEES INSUFFISANTES"
-        ),
+        "specialite": MOTEURS[moteur],
+        "qualification": "🟡 DONNEES INSUFFISANTES",
         "validation": False,
         "gagnant_espere": None,
         "meilleur_place": None,
@@ -169,65 +383,87 @@ def analyser_moteur(chevaux, moteur, problemes):
         "pari_retenu": None,
         "fige": False,
         "heure_fige": None,
-        "raison": (
-            "; ".join(problemes)
-            if problemes else ""
-        ),
+        "raison": "",
+        "indicateurs": [],
     }
 
-    if problemes:
+
+def analyser_moteur(partants, moteur, anomalies):
+    resultat = base_moteur(moteur)
+
+    if anomalies:
+        resultat["qualification"] = "🔴 EXCLU"
+        resultat["raison"] = "; ".join(anomalies)
         return resultat
 
     notes = []
+    methodes = set()
 
-    for cheval in chevaux:
-        valeurs = [
-            (indicateur(cheval, champ), poids)
-            for champ, poids in criteres
-        ]
+    for cheval in partants:
+        indicateur = calculer_indicateur(
+            cheval,
+            moteur
+        )
 
-        disponibles = [
-            (val, poids)
-            for val, poids in valeurs
-            if val is not None
-        ]
+        if indicateur is None:
+            indicateur = score_documente(
+                cheval,
+                moteur
+            )
 
-        if len(disponibles) < 2:
+        if indicateur is None:
             resultat["raison"] = (
-                "Moins de deux indicateurs sportifs "
-                "pour au moins un partant"
+                "Indicateurs sportifs insuffisants "
+                "pour comparer tous les partants"
             )
             return resultat
 
-        score = sum(
-            val * poids
-            for val, poids in disponibles
-        ) / sum(
-            poids for _, poids in disponibles
-        )
+        valeur, origine = indicateur
 
-        notes.append(
-            (cheval["numero"], score)
+        notes.append({
+            "numero": cheval["numero"],
+            "valeur": valeur,
+            "origine": origine,
+        })
+
+        methodes.add(origine)
+
+    # Ne jamais comparer des gains avec des scores,
+    # ou des musiques avec des indicateurs differents.
+    if len(methodes) != 1:
+        resultat["raison"] = (
+            "Methodes ou provenances non comparables "
+            "entre les partants"
         )
+        return resultat
 
     notes.sort(
-        key=lambda item: (-item[1], item[0])
+        key=lambda item: (
+            -item["valeur"],
+            item["numero"]
+        )
     )
 
     if len(notes) < 2:
         resultat["raison"] = (
-            "Moins de deux chevaux évaluables"
+            "Moins de deux chevaux evaluables"
         )
         return resultat
 
-    if abs(notes[0][1] - notes[1][1]) < 1e-9:
+    if math.isclose(
+        notes[0]["valeur"],
+        notes[1]["valeur"],
+        rel_tol=0,
+        abs_tol=1e-9
+    ):
         resultat["raison"] = (
-            "Égalité des meilleurs scores"
+            "Egalite entre les deux premiers"
         )
         return resultat
 
     ordre = [
-        numero for numero, _ in notes[:5]
+        item["numero"]
+        for item in notes[:5]
     ]
 
     resultat.update({
@@ -236,127 +472,151 @@ def analyser_moteur(chevaux, moteur, problemes):
         "gagnant_espere": ordre[0],
         "meilleur_place": ordre[1],
         "ordre_arrivee_espere": ordre,
-        "pari_retenu": (
-            "Simple Gagnant "
-            "(proposition non placée)"
-        ),
-        "scores": [
+        "pari_retenu": None,
+        "fige": False,
+        "heure_fige": None,
+        "indicateurs": [
             {
-                "numero": numero,
-                "score": round(score, 3)
+                "numero": item["numero"],
+                "valeur": round(
+                    item["valeur"], 3
+                ),
+                "origine": item["origine"],
             }
-            for numero, score in notes
+            for item in notes
         ],
         "raison": (
-            "Classement heuristique ; "
-            "non validé statistiquement"
+            "Classement indicatif fonde sur "
+            + notes[0]["origine"]
+            + "; non valide statistiquement; "
+            "aucun pari ni FIGE"
         ),
     })
 
     return resultat
 
 
-def analyser_course(course, maintenant, date_programme):
+def analyser_course(course, date_programme, maintenant):
+    anomalies = []
+
     identifiant = str(
         course.get("id") or ""
     ).strip()
+
+    if not identifiant:
+        anomalies.append(
+            "Identifiant manquant"
+        )
 
     depart = depart_paris(
         course.get("heure_depart_timestamp")
     )
 
-    participants = course.get("participants")
-    problemes = []
+    if depart is None:
+        anomalies.append(
+            "Depart non renseigne"
+        )
 
-    if not identifiant:
-        problemes.append("Identifiant manquant")
+    elif depart.date().isoformat() != date_programme:
+        anomalies.append(
+            "Date de depart incoherente"
+        )
+
+    elif depart <= maintenant:
+        anomalies.append(
+            "Depart passe : aucun pronostic retroactif"
+        )
+
+    statuts_exclus = {
+        "ANNULEE",
+        "ANNULE",
+        "ABANDONNEE",
+        "REPORTEE",
+    }
+
+    statut = str(
+        course.get("statut", "")
+    ).upper()
+
+    if statut in statuts_exclus:
+        anomalies.append(
+            "Course annulee ou reportee"
+        )
+
+    if course.get("participants_verifies") is not True:
+        anomalies.append(
+            "Participants non verifies"
+        )
+
+    participants = course.get("participants")
 
     if not isinstance(participants, list):
-        problemes.append(
+        anomalies.append(
             "Liste des participants invalide"
         )
         participants = []
 
-    if course.get("participants_verifies") is not True:
-        problemes.append(
-            "Participants non vérifiés"
+    if not participants:
+        anomalies.append(
+            "Participants absents"
         )
 
-    if depart is None:
-        problemes.append(
-            "Départ non renseigné"
-        )
-    elif depart.date().isoformat() != date_programme:
-        problemes.append(
-            "Date de départ incohérente"
-        )
-    elif depart <= maintenant:
-        problemes.append(
-            "Départ passé : aucun pronostic rétroactif"
-        )
-
-    statuts_exclus = {
-        "ANNULEE", "ANNULE",
-        "ABANDONNEE", "REPORTEE"
-    }
-
-    if str(
-        course.get("statut", "")
-    ).upper() in statuts_exclus:
-        problemes.append(
-            "Course annulée ou reportée"
-        )
-
-    chevaux = []
+    partants = []
     numeros = set()
 
-    for p in participants:
-        if not isinstance(p, dict):
-            problemes.append(
-                "Participant mal formé"
+    for cheval in participants:
+        if not isinstance(cheval, dict):
+            anomalies.append(
+                "Participant mal forme"
             )
             continue
 
-        numero = numero_positif(
-            p.get("numero")
+        numero = entier_positif(
+            cheval.get("numero")
         )
 
         if numero is None or numero in numeros:
-            problemes.append(
-                "Numéro invalide ou dupliqué"
+            anomalies.append(
+                "Numero invalide ou duplique"
             )
             continue
 
         numeros.add(numero)
 
-        if p.get("non_partant") is True:
+        if cheval.get("non_partant") is True:
             continue
 
-        chevaux.append(
-            dict(p, numero=numero)
+        partants.append(
+            dict(
+                cheval,
+                numero=numero
+            )
         )
 
-    annonce = numero_positif(
+    annonce = entier_positif(
         course.get("nombre_partants")
     )
 
-    if annonce is not None and annonce != len(chevaux):
-        problemes.append(
-            "Nombre de partants incohérent"
-        )
+    if annonce is not None:
+        if annonce != len(partants):
+            anomalies.append(
+                "Nombre de partants incoherent"
+            )
 
-    if len(chevaux) < 2:
-        problemes.append(
+    if len(partants) < 2:
+        anomalies.append(
             "Moins de deux partants"
         )
 
-    problemes = list(
-        dict.fromkeys(problemes)
+    anomalies = list(
+        dict.fromkeys(anomalies)
     )
 
     moteurs = [
         analyser_moteur(
-            chevaux, moteur, problemes
+            partants,
+            moteur,
+            anomalies
         )
         for moteur in MOTEURS
     ]
@@ -374,12 +634,12 @@ def analyser_course(course, maintenant, date_programme):
             if depart else None
         ),
         "partants_annonces": annonce,
-        "partants_verifies": len(chevaux),
+        "partants_verifies": len(partants),
         "controle": (
-            "EXCLU" if problemes
+            "EXCLU" if anomalies
             else "PROGRAMME_VERIFIE"
         ),
-        "anomalies": problemes,
+        "anomalies": anomalies,
         "moteurs": moteurs,
     }
 
@@ -388,116 +648,130 @@ def main():
     parser = argparse.ArgumentParser(
         description=__doc__
     )
+
     parser.add_argument(
         "--input",
-        default="data/programme_pmu.json"
+        default=str(SOURCE)
     )
+
     parser.add_argument(
         "--output",
-        default="data/analyses_moteurs.json"
+        default=str(SORTIE)
     )
+
     args = parser.parse_args()
 
     maintenant = datetime.now(PARIS)
 
     try:
-        donnees = lire(args.input)
+        donnees = lire_json(args.input)
 
-        if (
-            not isinstance(donnees, dict)
-            or not isinstance(
-                donnees.get("courses"), list
-            )
-            or not donnees["courses"]
-        ):
+        if not isinstance(donnees, dict):
             raise ValueError(
-                "Programme vide ou invalide"
+                "Programme JSON invalide"
             )
 
-        date = donnees.get("date")
+        date_programme = donnees.get("date")
 
-        if date != maintenant.date().isoformat():
+        if date_programme != maintenant.date().isoformat():
             raise ValueError(
                 "Programme hors date de Paris"
             )
 
+        courses = donnees.get("courses")
+
+        if not isinstance(courses, list) or not courses:
+            raise ValueError(
+                "Liste de courses absente"
+            )
+
         identifiants = [
-            c.get("id")
-            for c in donnees["courses"]
-            if isinstance(c, dict)
+            course.get("id")
+            for course in courses
+            if isinstance(course, dict)
         ]
 
+        if len(identifiants) != len(courses):
+            raise ValueError(
+                "Course mal formee"
+            )
+
         if (
-            len(identifiants) != len(donnees["courses"])
-            or any(not x for x in identifiants)
+            any(not identifiant for identifiant in identifiants)
             or len(set(identifiants)) != len(identifiants)
         ):
             raise ValueError(
-                "Identifiants invalides ou dupliqués"
+                "Identifiants invalides ou dupliques"
             )
 
         analyses = [
             analyser_course(
-                course, maintenant, date
+                course,
+                date_programme,
+                maintenant
             )
-            for course in donnees["courses"]
+            for course in courses
         ]
 
         analyses.sort(
-            key=lambda c: (
-                c["depart_paris"] is None,
-                c["depart_paris"] or "",
-                c["id"]
+            key=lambda course: (
+                course["depart_paris"] is None,
+                course["depart_paris"] or "",
+                course["id"]
             )
         )
 
-        nombre = sum(
-            m["validation"]
+        total = sum(
+            int(moteur["validation"])
             for course in analyses
-            for m in course["moteurs"]
+            for moteur in course["moteurs"]
         )
 
         resultat = {
             "logiciel": "MPAA X1000 FUSION",
             "schema_version": 2,
-            "date": date,
+            "date": date_programme,
             "analyse_effectuee_paris": (
                 maintenant.isoformat()
             ),
             "source_programme": donnees.get("source"),
             "statut": (
                 "PRONOSTICS_CALCULES"
-                if nombre
+                if total > 0
                 else "ANALYSE_SANS_PRONOSTIC"
             ),
             "explication": (
-                "Classements heuristiques disponibles ; "
-                "aucun FIGÉ archivé."
-                if nombre else
-                "Indicateurs sportifs insuffisants ; "
-                "aucun pronostic inventé."
+                "Classements indicatifs bases sur "
+                "les donnees disponibles; "
+                "aucun pari et aucun FIGE archive"
             ),
             "nombre_courses": len(analyses),
-            "nombre_pronostics": nombre,
+            "nombre_pronostics": total,
             "nombre_figes": 0,
             "courses": analyses,
         }
 
-        ecrire(args.output, resultat)
+        ecrire_json(
+            args.output,
+            resultat
+        )
 
         print(
-            "MPAA X1000 :",
+            "MPAA X1000 FUSION :",
             len(analyses),
             "courses ;",
-            nombre,
-            "sélections moteur ; 0 FIGÉ archivé"
+            total,
+            "classements ;",
+            "0 FIGE"
         )
 
         return 0
 
     except (
-        OSError, ValueError,
-        TypeError, KeyError
+        OSError,
+        ValueError,
+        TypeError,
+        KeyError
     ) as erreur:
         print(
             "ERREUR MPAA X1000 :",
@@ -509,4 +783,3 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
-    
