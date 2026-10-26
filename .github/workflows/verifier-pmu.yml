@@ -1,0 +1,32 @@
+name: MPAA X1000 - Verification PMU
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verification-pmu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Recuperer les fichiers
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Tester les donnees PMU
+        run: python scripts/collecte_pmu.py
+
+      - name: Conserver le diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostic-pmu
+          path: data/programme_pmu.json
+          if-no-files-found: warn
