@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MPAA X1000 FUSION</title>
+<style>
+:root {
+  color-scheme:dark;
+  font-family:Arial,sans-serif;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:#091322;
+  color:#f1f5f9;
+}
+header {
+  background:linear-gradient(135deg,#123c35,#112747);
+  text-align:center;
+  padding:26px 12px;
+  border-bottom:3px solid #22c55e;
+}
+h1 {font-size:26px;margin:8px 0}
+h2 {font-size:19px;color:#86efac}
+p {line-height:1.5}
+main {max-width:1100px;margin:auto;padding:14px}
+.card {
+  background:#152338;
+  border:1px solid #34465c;
+  border-radius:12px;
+  padding:16px;
+  margin:14px 0;
+}
+.green {color:#4ade80}
+.yellow {color:#facc15}
+.red {color:#f87171}
+button,select,input {
+  padding:11px;
+  border-radius:8px;
+  border:1px solid #64748b;
+  font-size:15px;
+}
+button {
+  background:#16a34a;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  margin:4px;
+}
+button:disabled {opacity:.5}
+input,select {background:#0f172a;color:white}
+table {
+  border-collapse:collapse;
+  width:100%;
+  min-width:850px;
+  font-size:13px;
+}
+th,td {
+  padding:11px 7px;
+  border-bottom:1px solid #334155;
+  text-align:left;
+}
+th {background:#204535;color:#fff}
+.scroll {overflow-x:auto}
+.tag {
+  display:inline-block;
+  border-radius:7px;
+  padding:5px 8px;
+  background:#334155;
+}
+footer {
+  text-align:center;
+  color:#94a3b8;
+  padding:22px;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>🇸🇳🧠🔥 MPAA X1000 FUSION</h1>
+  <strong>INTELLIGENCE HIPPIQUE M1 À M5</strong>
+  <p>Analyse • Pronostics • FIGÉS • Audits</p>
+  <span class="tag">🇫🇷 Heure de Paris</span>
+</header>
+
+<main>
+<section class="card">
+<h2>📡 Centre de contrôle</h2>
+<p id="clock">Heure de Paris : chargement...</p>
+<p>État : <span class="yellow">MODE LOCAL</span></p>
+<p id="source">Source PMU : non connectée</p>
+<button onclick="render()">Actualiser l'affichage</button>
+<button onclick="exportData()">Exporter les FIGÉS</button>
+</section>
+
+<section class="card">
+<h2>🧠 Les cinq moteurs</h2>
+<p>🟦 M1 — Forme et performances</p>
+<p>🟩 M2 — Aptitudes et conditions</p>
+<p>🟨 M3 — Engagement et entourage</p>
+<p>🟪 M4 — Valeur et potentiel</p>
+<p>🟧 M5 — Régularité et risques</p>
+<p class="yellow">
+Les moteurs sont des cadres d'analyse.
+Aucune prédiction automatique n'est encore activée.
+</p>
+</section>
+
+<section class="card">
+<h2>🏇 Enregistrer une étude vérifiée</h2>
+<p>
+Saisissez une course et les pronostics établis
+avant son départ. Les numéros doivent être
+classés par ordre d'arrivée espéré.
+</p>
+<p>
+<input id="course" placeholder="Ex : R1 C4" maxlength="80">
+<input id="hippo" placeholder="Hippodrome" maxlength="80">
+</p>
+<p>
+<input id="depart" type="datetime-local">
+<input id="partants" type="number" min="1"
+placeholder="Nombre de partants">
+</p>
+<p>
+<select id="moteur">
+<option>M1</option><option>M2</option>
+<option>M3</option><option>M4</option>
+<option>M5</option>
+</select>
+<input id="ordre" placeholder="Ordre espéré : 4-8-2-7-1">
+</p>
+<p>
+<select id="pari">
+<option>Simple Gagnant</option>
+<option>Simple Placé</option>
+<option>Couplé</option>
+<option>Trio</option>
+<option>Quarté+</option>
+<option>Quinté+</option>
+<option>Multi</option>
+<option>2sur4</option>
+<option>Autre pari PMU</option>
+</select>
+</p>
+<button onclick="ajouter()">Ajouter au tableau</button>
+<p id="message" class="yellow"></p>
+</section>
+
+<section class="card">
+<h2>📊 TABLEAU OFFICIEL X1000</h2>
+<div class="scroll">
+<table>
+<thead>
+<tr>
+<th>Course</th>
+<th>👥 Partants</th>
+<th>Moteur</th>
+<th>🥇 Gagnant espéré</th>
+<th>🥈 Meilleur placé</th>
+<th>Ordre d'arrivée espéré</th>
+<th>🎯 Pari</th>
+<th>Qualification</th>
+<th>Validation</th>
+<th>Heure Paris</th>
+</tr>
+</thead>
+<tbody id="tableau"></tbody>
+</table>
+</div>
+</section>
+
+<section class="card">
+<h2>🔒 Registre des FIGÉS</h2>
+<p>
+Un FIGÉ conserve le pronostic tel qu'il a été
+enregistré avant le départ déclaré.
+</p>
+<div id="registre">Aucun FIGÉ enregistré.</div>
+</section>
+
+<section class="card">
+<h2>🛡️ Contrôle et transparence</h2>
+<p>🟢 Étude enregistrée et FIGÉ local</p>
+<p>🟡 Données incomplètes ou non vérifiées</p>
+<p>🔴 Course non admissible au FIGÉ</p>
+<p>
+Les arrivées officielles doivent être vérifiées
+avant tout audit. Aucun résultat n'est inventé.
+</p>
+<p>
+Les données sont conservées dans ce navigateur
+uniquement. Elles ne sont pas synchronisées
+entre les appareils.
+</p>
+</section>
+</main>
+
+<footer>
+🇸🇳🧠🔥 MPAA X1000 FUSION<br>
+Version 1.0 — Interface locale<br>
+Aucun gain ni résultat garanti.
+</footer>
+
+<script>
+"use strict";
+
+const KEY="mpaa_x1000_figes_v1";
+let figes=[];
+
+try {
+  const saved=JSON.parse(localStorage.getItem(KEY)||"[]");
+  if(Array.isArray(saved)) figes=saved;
+} catch(e) {
+  console.warn("Stockage indisponible",e);
+}
+
+function parisTime(date) {
+  return new Intl.DateTimeFormat("fr-FR",{
+    timeZone:"Europe/Paris",
+    dateStyle:"short",
+    timeStyle:"medium"
+  }).format(date);
+}
+
+function horloge() {
+  document.getElementById("clock").textContent=
+    "🇫🇷 Heure de Paris : "+parisTime(new Date());
+}
+horloge();
+setInterval(horloge,1000);
+
+function val(id) {
+  return document.getElementById(id).value.trim();
+}
+
+function message(txt) {
+  document.getElementById("message").textContent=txt;
+}
+
+function save() {
+  try {
+    localStorage.setItem(KEY,JSON.stringify(figes));
+    return true;
+  } catch(e) {
+    message("Stockage indisponible. Exportez vos données.");
+    return false;
+  }
+}
+
+function ajouter() {
+  const course=val("course");
+  const hippo=val("hippo");
+  const depart=val("depart");
+  const partants=Number(val("partants"));
+  const moteur=val("moteur");
+  const ordre=val("ordre");
+  const pari=val("pari");
+
+  if(!course||!hippo||!depart||
+     !Number.isInteger(partants)||partants<1) {
+    message("Complétez la course, le lieu, le départ et les partants.");
+    return;
+  }
+
+  const nums=ordre.split(/[\s,;-]+/)
+    .filter(Boolean).map(Number);
+
+  if(!nums.length ||
+     nums.some(n=>!Number.isInteger(n)||n<1) ||
+     new Set(nums).size!==nums.length) {
+    message("Saisissez des numéros distincts et valides.");
+    return;
+  }
+
+  const start=new Date(depart);
+  const now=new Date();
+
+  if(Number.isNaN(start.getTime())||start<=now) {
+    message("FIGÉ refusé : départ déclaré déjà passé.");
+    return;
+  }
+
+  if(nums.length>partants) {
+    message("Plus de chevaux sélectionnés que de partants.");
+    return;
+  }
+
+  if(figes.some(f=>f.course===course &&
+      f.hippo===hippo && f.depart===depart &&
+      f.moteur===moteur)) {
+    message("Un FIGÉ existe déjà pour ce moteur et cette course.");
+    return;
+  }
+
+  const record={
+    id:crypto.randomUUID
+      ?crypto.randomUUID()
+      :String(Date.now())+"-"+Math.random(),
+    course,hippo,depart,partants,moteur,
+    ordre:nums,pari,
+    createdAt:now.toISOString(),
+    statut:"FIGÉ LOCAL — NON VÉRIFIÉ"
+  };
+
+  figes.push(record);
+  save();
+  render();
+  message("FIGÉ local enregistré. Vérification externe requise.");
+}
+
+function cell(tr,value) {
+  const td=document.createElement("td");
+  td.textContent=String(value);
+  tr.appendChild(td);
+}
+
+function render() {
+  const tbody=document.getElementById("tableau");
+  tbody.replaceChildren();
+
+  const sorted=[...figes].sort(
+    (a,b)=>new Date(a.depart)-new Date(b.depart)
+  );
+
+  for(const f of sorted) {
+    const tr=document.createElement("tr");
+    cell(tr,f.hippo+" "+f.course);
+    cell(tr,f.partants);
+    cell(tr,f.moteur);
+    cell(tr,f.ordre[0]??"—");
+    cell(tr,f.ordre[1]??f.ordre[0]??"—");
+    cell(tr,f.ordre.join(" - "));
+    cell(tr,f.pari);
+    cell(tr,"🟡 Non vérifiée");
+    cell(tr,"🔒 FIGÉ local");
+    cell(tr,parisTime(new Date(f.createdAt)));
+    tbody.appendChild(tr);
+  }
+
+  if(!sorted.length) {
+    const tr=document.createElement("tr");
+    const td=document.createElement("td");
+    td.colSpan=10;
+    td.textContent="Aucune course enregistrée.";
+    tr.appendChild(td);
+    tbody.appendChild(tr);
+  }
+
+  document.getElementById("registre").textContent=
+    sorted.length+" FIGÉ(S) enregistré(s) localement.";
+}
+
+function exportData() {
+  const data=JSON.stringify({
+    logiciel:"MPAA X1000 FUSION",
+    exportedAt:new Date().toISOString(),
+    figes
+  },null,2);
+
+  const blob=new Blob([data],{
+    type:"application/json"
+  });
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="mpaa-x1000-figes.json";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+render();
+</script>
+</body>
+</html>
