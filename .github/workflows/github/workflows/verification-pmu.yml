@@ -1,0 +1,53 @@
+name: MPAA X1000 - Collecte PMU
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collecte-pmu
+  cancel-in-progress: false
+
+jobs:
+  collecte:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Recuperer le depot
+        uses: actions/checkout@v4
+
+      - name: Installer Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Collecter les donnees PMU
+        run: python scripts/collecte_pmu.py
+
+      - name: Enregistrer le diagnostic
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: diagnostic-pmu
+          path: data/programme_pmu.json
+          if-no-files-found: warn
+
+      - name: Publier les donnees reelles
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/programme_pmu.json
+          if git diff --cached --quiet; then
+            echo "Aucune modification"
+          else
+            git commit -m "Actualisation automatique PMU"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          
