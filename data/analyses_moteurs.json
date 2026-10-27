@@ -2,26 +2,22 @@
   "logiciel": "MPAA X1000 FUSION",
   "schema_version": 3,
   "date": "2026-10-27",
-  "analyse_effectuee_paris": "2026-10-27T13:31:31.419836+01:00",
+  "analyse_effectuee_paris": "2026-10-27T14:39:11.600351+01:00",
   "source_programme": "https://online.turfinfo.api.pmu.fr/rest/client/1/programme/27102026",
   "statut": "PRONOSTICS_CALCULES",
   "explication": "Pré-verrous calculés ; aucun FIGÉ créé par ce script.",
   "nombre_courses": 45,
-  "nombre_pronostics": 53,
+  "nombre_pronostics": 46,
   "nombre_figes": 0,
   "diagnostic": {
     "refus_par_motif": [
       {
         "motif": "Aucun indicateur sportif chiffré disponible",
-        "nombre": 105
+        "nombre": 90
       },
       {
         "motif": "Départ passé : aucun pronostic rétroactif",
-        "nombre": 50
-      },
-      {
-        "motif": "Couverture sportive insuffisante : 5/8 chevaux évaluables",
-        "nombre": 2
+        "nombre": 75
       },
       {
         "motif": "Couverture sportive insuffisante : 8/12 chevaux évaluables",
@@ -38,10 +34,6 @@
       {
         "motif": "Couverture sportive insuffisante : 1/7 chevaux évaluables",
         "nombre": 2
-      },
-      {
-        "motif": "Tête indécise : écart 0.95/100",
-        "nombre": 1
       },
       {
         "motif": "Tête indécise : écart 0.35/100",
@@ -71,59 +63,59 @@
     "indicateurs_absents": [
       {
         "champ": "score_aptitude",
-        "nombre": 402
+        "nombre": 345
       },
       {
         "champ": "score_distance",
-        "nombre": 402
+        "nombre": 345
       },
       {
         "champ": "score_terrain",
-        "nombre": 402
+        "nombre": 345
       },
       {
         "champ": "score_classe",
-        "nombre": 402
+        "nombre": 345
       },
       {
         "champ": "score_competition",
-        "nombre": 402
+        "nombre": 345
       },
       {
         "champ": "score_engagement",
-        "nombre": 402
+        "nombre": 345
       },
       {
         "champ": "score_entourage",
-        "nombre": 402
+        "nombre": 345
       },
       {
         "champ": "score_entraineur",
-        "nombre": 402
+        "nombre": 345
       },
       {
         "champ": "score_jockey",
-        "nombre": 402
+        "nombre": 345
       },
       {
         "champ": "score_forme",
-        "nombre": 32
+        "nombre": 26
       },
       {
         "champ": "score_performances",
-        "nombre": 16
+        "nombre": 13
       },
       {
         "champ": "taux_victoire",
-        "nombre": 16
+        "nombre": 13
       },
       {
         "champ": "score_fiabilite",
-        "nombre": 16
+        "nombre": 13
       },
       {
         "champ": "score_regularite",
-        "nombre": 16
+        "nombre": 13
       }
     ],
     "collecte_a_enrichir": false
@@ -1380,184 +1372,16 @@
       "depart_paris": "2026-10-27T13:43:00+01:00",
       "partants_annonces": null,
       "partants_verifies": 5,
-      "controle": "PROGRAMME_VERIFIE",
+      "controle": "EXCLU",
       "collecte_paris": null,
-      "anomalies": [],
+      "anomalies": [
+        "Départ passé : aucun pronostic rétroactif"
+      ],
       "moteurs": [
         {
           "moteur": "M1",
           "specialite": "Forme et performances",
-          "qualification": "🟡 EN ÉTUDE",
-          "validation": false,
-          "gagnant_espere": null,
-          "meilleur_place": null,
-          "ordre_arrivee_espere": [],
-          "pari_retenu": null,
-          "fige": false,
-          "heure_fige": null,
-          "phase": "PREPARATION",
-          "confiance_donnees": 100.0,
-          "scores": [
-            {
-              "numero": 5,
-              "score": 62.62,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                62.62,
-                62.62
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 75.28,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 62.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 25.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 3,
-              "score": 61.666,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                61.67,
-                61.67
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 77.22,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 62.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 4,
-              "score": 36.189,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                36.19,
-                36.19
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 59.44,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 2,
-              "score": 24.999,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                25.0,
-                25.0
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 45.83,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 1,
-              "score": 21.309,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                21.31,
-                21.31
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 49.72,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            }
-          ],
-          "raison": "Tête indécise : écart 0.95/100",
-          "indicateurs_manquants": [],
-          "robustesse": 66.7,
-          "ecart_tete": 0.954,
-          "alertes": [
-            "Favori sensible au retrait d’un indicateur"
-          ],
-          "scenarios": [
-            {
-              "sans": "score_forme",
-              "premier": 5,
-              "stable": true
-            },
-            {
-              "sans": "score_performances",
-              "premier": 5,
-              "stable": true
-            },
-            {
-              "sans": "taux_victoire",
-              "premier": 3,
-              "stable": false
-            }
-          ]
-        },
-        {
-          "moteur": "M2",
-          "specialite": "Aptitude et conditions",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -1568,21 +1392,29 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_aptitude",
-              "chevaux": 5
-            },
-            {
-              "champ": "score_distance",
-              "chevaux": 5
-            },
-            {
-              "champ": "score_terrain",
-              "chevaux": 5
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
+          "robustesse": null,
+          "ecart_tete": null,
+          "alertes": [],
+          "scenarios": []
+        },
+        {
+          "moteur": "M2",
+          "specialite": "Aptitude et conditions",
+          "qualification": "🔴 EXCLU",
+          "validation": false,
+          "gagnant_espere": null,
+          "meilleur_place": null,
+          "ordre_arrivee_espere": [],
+          "pari_retenu": null,
+          "fige": false,
+          "heure_fige": null,
+          "phase": "PREPARATION",
+          "confiance_donnees": 0,
+          "scores": [],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -1591,7 +1423,7 @@
         {
           "moteur": "M3",
           "specialite": "Engagement et opposition",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -1602,21 +1434,8 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_classe",
-              "chevaux": 5
-            },
-            {
-              "champ": "score_competition",
-              "chevaux": 5
-            },
-            {
-              "champ": "score_engagement",
-              "chevaux": 5
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -1625,7 +1444,7 @@
         {
           "moteur": "M4",
           "specialite": "Entourage et potentiel",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -1636,21 +1455,8 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_entourage",
-              "chevaux": 5
-            },
-            {
-              "champ": "score_entraineur",
-              "chevaux": 5
-            },
-            {
-              "champ": "score_jockey",
-              "chevaux": 5
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -1659,178 +1465,23 @@
         {
           "moteur": "M5",
           "specialite": "Régularité et risques",
-          "qualification": "🟢 RETENU",
-          "validation": true,
-          "gagnant_espere": 3,
-          "meilleur_place": 5,
-          "ordre_arrivee_espere": [
-            3,
-            5,
-            4,
-            1,
-            2
-          ],
+          "qualification": "🔴 EXCLU",
+          "validation": false,
+          "gagnant_espere": null,
+          "meilleur_place": null,
+          "ordre_arrivee_espere": [],
           "pari_retenu": null,
           "fige": false,
           "heure_fige": null,
-          "phase": "PRE_VERROU",
-          "confiance_donnees": 100.0,
-          "scores": [
-            {
-              "numero": 3,
-              "score": 77.453,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                77.45,
-                77.45
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 62.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 100.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 77.22,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 5,
-              "score": 72.963,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                72.96,
-                72.96
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 62.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 87.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 75.28,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 4,
-              "score": 51.573,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                51.57,
-                51.57
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 87.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 59.44,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 1,
-              "score": 41.62,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                41.62,
-                41.62
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 100.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 49.72,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 2,
-              "score": 38.888,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                38.89,
-                38.89
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 45.83,
-                  "poids": 1
-                }
-              ]
-            }
-          ],
-          "raison": "Classement heuristique traçable, écart 4.49/100 ; FIGÉ à créer par figes_secure.py",
+          "phase": "PREPARATION",
+          "confiance_donnees": 0,
+          "scores": [],
+          "raison": "Départ passé : aucun pronostic rétroactif",
           "indicateurs_manquants": [],
-          "robustesse": 100.0,
-          "ecart_tete": 4.49,
-          "alertes": [
-            "Offres PMU non renseignées"
-          ],
-          "scenarios": [
-            {
-              "sans": "score_regularite",
-              "premier": 3,
-              "stable": true
-            },
-            {
-              "sans": "score_fiabilite",
-              "premier": 3,
-              "stable": true
-            },
-            {
-              "sans": "score_forme",
-              "premier": 3,
-              "stable": true
-            }
-          ]
+          "robustesse": null,
+          "ecart_tete": null,
+          "alertes": [],
+          "scenarios": []
         }
       ]
     },
@@ -1845,477 +1496,16 @@
       "depart_paris": "2026-10-27T13:55:00+01:00",
       "partants_annonces": null,
       "partants_verifies": 16,
-      "controle": "PROGRAMME_VERIFIE",
+      "controle": "EXCLU",
       "collecte_paris": null,
-      "anomalies": [],
+      "anomalies": [
+        "Départ passé : aucun pronostic rétroactif"
+      ],
       "moteurs": [
         {
           "moteur": "M1",
           "specialite": "Forme et performances",
-          "qualification": "🟢 RETENU",
-          "validation": true,
-          "gagnant_espere": 12,
-          "meilleur_place": 5,
-          "ordre_arrivee_espere": [
-            12,
-            5,
-            1,
-            14,
-            10
-          ],
-          "pari_retenu": null,
-          "fige": false,
-          "heure_fige": null,
-          "phase": "PRE_VERROU",
-          "confiance_donnees": 100.0,
-          "scores": [
-            {
-              "numero": 12,
-              "score": 72.619,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                72.62,
-                72.62
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 86.11,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 75.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 25.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 5,
-              "score": 68.69,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                68.69,
-                68.69
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 68.61,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 75.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 50.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 1,
-              "score": 56.666,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                56.67,
-                56.67
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 69.72,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 62.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 14,
-              "score": 55.356,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                55.36,
-                55.36
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 70.83,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 50.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 25.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 10,
-              "score": 54.217,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                54.22,
-                54.22
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 70.95,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 50.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 16.67,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 2,
-              "score": 52.974,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                52.97,
-                52.97
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 69.44,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 50.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 4,
-              "score": 46.786,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                46.79,
-                46.79
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 55.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 50.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 15,
-              "score": 42.737,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                42.74,
-                42.74
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 62.22,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 3,
-              "score": 34.166,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                34.17,
-                34.17
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 54.72,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 16,
-              "score": 29.524,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                29.52,
-                29.52
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 43.89,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 13,
-              "score": 25.117,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                25.12,
-                25.12
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 29.44,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 7,
-              "score": 22.62,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                22.62,
-                22.62
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 40.28,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 6,
-              "score": 20.951,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                20.95,
-                20.95
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 32.22,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 8,
-              "score": 19.284,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                19.28,
-                19.28
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 28.33,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 11,
-              "score": 15.951,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                15.95,
-                15.95
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 37.22,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 9,
-              "score": 9.763,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                9.76,
-                9.76
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 22.78,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            }
-          ],
-          "raison": "Classement heuristique traçable, écart 3.93/100 ; FIGÉ à créer par figes_secure.py",
-          "indicateurs_manquants": [],
-          "robustesse": 66.7,
-          "ecart_tete": 3.929,
-          "alertes": [
-            "Favori sensible au retrait d’un indicateur",
-            "Offres PMU non renseignées"
-          ],
-          "scenarios": [
-            {
-              "sans": "score_forme",
-              "premier": 5,
-              "stable": false
-            },
-            {
-              "sans": "score_performances",
-              "premier": 12,
-              "stable": true
-            },
-            {
-              "sans": "taux_victoire",
-              "premier": 12,
-              "stable": true
-            }
-          ]
-        },
-        {
-          "moteur": "M2",
-          "specialite": "Aptitude et conditions",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -2326,21 +1516,29 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_aptitude",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_distance",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_terrain",
-              "chevaux": 16
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
+          "robustesse": null,
+          "ecart_tete": null,
+          "alertes": [],
+          "scenarios": []
+        },
+        {
+          "moteur": "M2",
+          "specialite": "Aptitude et conditions",
+          "qualification": "🔴 EXCLU",
+          "validation": false,
+          "gagnant_espere": null,
+          "meilleur_place": null,
+          "ordre_arrivee_espere": [],
+          "pari_retenu": null,
+          "fige": false,
+          "heure_fige": null,
+          "phase": "PREPARATION",
+          "confiance_donnees": 0,
+          "scores": [],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -2349,7 +1547,7 @@
         {
           "moteur": "M3",
           "specialite": "Engagement et opposition",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -2360,21 +1558,8 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_classe",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_competition",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_engagement",
-              "chevaux": 16
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -2383,7 +1568,7 @@
         {
           "moteur": "M4",
           "specialite": "Entourage et potentiel",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -2394,21 +1579,8 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_entourage",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_entraineur",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_jockey",
-              "chevaux": 16
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -2417,464 +1589,23 @@
         {
           "moteur": "M5",
           "specialite": "Régularité et risques",
-          "qualification": "🟢 RETENU",
-          "validation": true,
-          "gagnant_espere": 12,
-          "meilleur_place": 5,
-          "ordre_arrivee_espere": [
-            12,
-            5,
-            1,
-            10,
-            2
-          ],
+          "qualification": "🔴 EXCLU",
+          "validation": false,
+          "gagnant_espere": null,
+          "meilleur_place": null,
+          "ordre_arrivee_espere": [],
           "pari_retenu": null,
           "fige": false,
           "heure_fige": null,
-          "phase": "PRE_VERROU",
-          "confiance_donnees": 100.0,
-          "scores": [
-            {
-              "numero": 12,
-              "score": 85.185,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                85.19,
-                85.19
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 75.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 100.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 86.11,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 5,
-              "score": 78.102,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                78.1,
-                78.1
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 75.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 87.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 68.61,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 1,
-              "score": 76.203,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                76.2,
-                76.2
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 62.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 100.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 69.72,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 10,
-              "score": 70.158,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                70.16,
-                70.16
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 50.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 100.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 70.95,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 2,
-              "score": 69.907,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                69.91,
-                69.91
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 50.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 100.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 69.44,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 4,
-              "score": 63.333,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                63.33,
-                63.33
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 50.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 87.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 55.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 15,
-              "score": 62.453,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                62.45,
-                62.45
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 100.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 62.22,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 14,
-              "score": 61.805,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                61.8,
-                61.8
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 50.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 70.83,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 3,
-              "score": 50.787,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                50.79,
-                50.79
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 87.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 54.72,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 16,
-              "score": 48.982,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                48.98,
-                48.98
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 87.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 43.89,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 13,
-              "score": 42.407,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                42.41,
-                42.41
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 29.44,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 7,
-              "score": 37.963,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                37.96,
-                37.96
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 40.28,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 6,
-              "score": 36.62,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                36.62,
-                36.62
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 32.22,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 8,
-              "score": 31.805,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                31.8,
-                31.8
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 62.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 28.33,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 11,
-              "score": 31.203,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                31.2,
-                31.2
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 37.22,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 9,
-              "score": 28.797,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                28.8,
-                28.8
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 22.78,
-                  "poids": 1
-                }
-              ]
-            }
-          ],
-          "raison": "Classement heuristique traçable, écart 7.08/100 ; FIGÉ à créer par figes_secure.py",
+          "phase": "PREPARATION",
+          "confiance_donnees": 0,
+          "scores": [],
+          "raison": "Départ passé : aucun pronostic rétroactif",
           "indicateurs_manquants": [],
-          "robustesse": 100.0,
-          "ecart_tete": 7.083,
-          "alertes": [
-            "Offres PMU non renseignées"
-          ],
-          "scenarios": [
-            {
-              "sans": "score_regularite",
-              "premier": 12,
-              "stable": true
-            },
-            {
-              "sans": "score_fiabilite",
-              "premier": 12,
-              "stable": true
-            },
-            {
-              "sans": "score_forme",
-              "premier": 12,
-              "stable": true
-            }
-          ]
+          "robustesse": null,
+          "ecart_tete": null,
+          "alertes": [],
+          "scenarios": []
         }
       ]
     },
@@ -2889,477 +1620,16 @@
       "depart_paris": "2026-10-27T14:12:00+01:00",
       "partants_annonces": null,
       "partants_verifies": 16,
-      "controle": "PROGRAMME_VERIFIE",
+      "controle": "EXCLU",
       "collecte_paris": null,
-      "anomalies": [],
+      "anomalies": [
+        "Départ passé : aucun pronostic rétroactif"
+      ],
       "moteurs": [
         {
           "moteur": "M1",
           "specialite": "Forme et performances",
-          "qualification": "🟢 RETENU",
-          "validation": true,
-          "gagnant_espere": 5,
-          "meilleur_place": 13,
-          "ordre_arrivee_espere": [
-            5,
-            13,
-            4,
-            12,
-            2
-          ],
-          "pari_retenu": null,
-          "fige": false,
-          "heure_fige": null,
-          "phase": "PRE_VERROU",
-          "confiance_donnees": 100.0,
-          "scores": [
-            {
-              "numero": 5,
-              "score": 57.501,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                57.5,
-                57.5
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 71.67,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 50.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 37.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 13,
-              "score": 50.594,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                50.59,
-                50.59
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 47.22,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 62.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 25.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 4,
-              "score": 40.953,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                40.95,
-                40.95
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 53.89,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 12,
-              "score": 37.26,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                37.26,
-                37.26
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 49.44,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 2,
-              "score": 29.167,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                29.17,
-                29.17
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 38.89,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 1,
-              "score": 29.047,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                29.05,
-                29.05
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 38.61,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 14,
-              "score": 23.93,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                23.93,
-                23.93
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 26.67,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 16,
-              "score": 23.571,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                23.57,
-                23.57
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 42.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 7,
-              "score": 22.024,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                22.02,
-                22.02
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 38.89,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 10,
-              "score": 20.477,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                20.48,
-                20.48
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 22.78,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 15,
-              "score": 20.476,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                20.48,
-                20.48
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 31.11,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 11,
-              "score": 20.24,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                20.24,
-                20.24
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 30.56,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 6,
-              "score": 13.809,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                13.81,
-                13.81
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 19.72,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 9,
-              "score": 12.501,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                12.5,
-                12.5
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 29.17,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 3,
-              "score": 10.714,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                10.71,
-                10.71
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 8,
-              "score": 4.761,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                4.76,
-                4.76
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 11.11,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            }
-          ],
-          "raison": "Classement heuristique traçable, écart 6.91/100 ; FIGÉ à créer par figes_secure.py",
-          "indicateurs_manquants": [],
-          "robustesse": 66.7,
-          "ecart_tete": 6.907,
-          "alertes": [
-            "Favori sensible au retrait d’un indicateur",
-            "Offres PMU non renseignées"
-          ],
-          "scenarios": [
-            {
-              "sans": "score_forme",
-              "premier": 13,
-              "stable": false
-            },
-            {
-              "sans": "score_performances",
-              "premier": 5,
-              "stable": true
-            },
-            {
-              "sans": "taux_victoire",
-              "premier": 5,
-              "stable": true
-            }
-          ]
-        },
-        {
-          "moteur": "M2",
-          "specialite": "Aptitude et conditions",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -3370,21 +1640,29 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_aptitude",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_distance",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_terrain",
-              "chevaux": 16
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
+          "robustesse": null,
+          "ecart_tete": null,
+          "alertes": [],
+          "scenarios": []
+        },
+        {
+          "moteur": "M2",
+          "specialite": "Aptitude et conditions",
+          "qualification": "🔴 EXCLU",
+          "validation": false,
+          "gagnant_espere": null,
+          "meilleur_place": null,
+          "ordre_arrivee_espere": [],
+          "pari_retenu": null,
+          "fige": false,
+          "heure_fige": null,
+          "phase": "PREPARATION",
+          "confiance_donnees": 0,
+          "scores": [],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -3393,7 +1671,7 @@
         {
           "moteur": "M3",
           "specialite": "Engagement et opposition",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -3404,21 +1682,8 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_classe",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_competition",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_engagement",
-              "chevaux": 16
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -3427,7 +1692,7 @@
         {
           "moteur": "M4",
           "specialite": "Entourage et potentiel",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -3438,21 +1703,8 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_entourage",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_entraineur",
-              "chevaux": 16
-            },
-            {
-              "champ": "score_jockey",
-              "chevaux": 16
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -3461,465 +1713,23 @@
         {
           "moteur": "M5",
           "specialite": "Régularité et risques",
-          "qualification": "🟢 RETENU",
-          "validation": true,
-          "gagnant_espere": 5,
-          "meilleur_place": 13,
-          "ordre_arrivee_espere": [
-            5,
-            13,
-            12,
-            4,
-            2
-          ],
+          "qualification": "🔴 EXCLU",
+          "validation": false,
+          "gagnant_espere": null,
+          "meilleur_place": null,
+          "ordre_arrivee_espere": [],
           "pari_retenu": null,
           "fige": false,
           "heure_fige": null,
-          "phase": "PRE_VERROU",
-          "confiance_donnees": 100.0,
-          "scores": [
-            {
-              "numero": 5,
-              "score": 70.278,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                70.28,
-                70.28
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 50.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 100.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 71.67,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 13,
-              "score": 64.12,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                64.12,
-                64.12
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 62.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 47.22,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 12,
-              "score": 51.99,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                51.99,
-                51.99
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 49.44,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 4,
-              "score": 48.565,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                48.56,
-                48.56
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 62.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 53.89,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 2,
-              "score": 43.982,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                43.98,
-                43.98
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 38.89,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 7,
-              "score": 41.898,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                41.9,
-                41.9
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 87.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 38.89,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 16,
-              "score": 38.333,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                38.33,
-                38.33
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 42.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 1,
-              "score": 35.602,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                35.6,
-                35.6
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 50.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 38.61,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 14,
-              "score": 33.612,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                33.61,
-                33.61
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 50.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 26.67,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 10,
-              "score": 32.963,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                32.96,
-                32.96
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 50.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 22.78,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 15,
-              "score": 32.268,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                32.27,
-                32.27
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 62.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 31.11,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 9,
-              "score": 29.862,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                29.86,
-                29.86
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 29.17,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 3,
-              "score": 25.0,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                25.0,
-                25.0
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 62.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 25.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 6,
-              "score": 22.037,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                22.04,
-                22.04
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 37.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 19.72,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 11,
-              "score": 19.677,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                19.68,
-                19.68
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 25.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 30.56,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 8,
-              "score": 14.352,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                14.35,
-                14.35
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 37.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 11.11,
-                  "poids": 1
-                }
-              ]
-            }
-          ],
-          "raison": "Classement heuristique traçable, écart 6.16/100 ; FIGÉ à créer par figes_secure.py",
+          "phase": "PREPARATION",
+          "confiance_donnees": 0,
+          "scores": [],
+          "raison": "Départ passé : aucun pronostic rétroactif",
           "indicateurs_manquants": [],
-          "robustesse": 66.7,
-          "ecart_tete": 6.158,
-          "alertes": [
-            "Favori sensible au retrait d’un indicateur",
-            "Offres PMU non renseignées"
-          ],
-          "scenarios": [
-            {
-              "sans": "score_regularite",
-              "premier": 5,
-              "stable": true
-            },
-            {
-              "sans": "score_fiabilite",
-              "premier": 13,
-              "stable": false
-            },
-            {
-              "sans": "score_forme",
-              "premier": 5,
-              "stable": true
-            }
-          ]
+          "robustesse": null,
+          "ecart_tete": null,
+          "alertes": [],
+          "scenarios": []
         }
       ]
     },
@@ -3934,14 +1744,16 @@
       "depart_paris": "2026-10-27T14:15:00+01:00",
       "partants_annonces": null,
       "partants_verifies": 8,
-      "controle": "PROGRAMME_VERIFIE",
+      "controle": "EXCLU",
       "collecte_paris": null,
-      "anomalies": [],
+      "anomalies": [
+        "Départ passé : aucun pronostic rétroactif"
+      ],
       "moteurs": [
         {
           "moteur": "M1",
           "specialite": "Forme et performances",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -3950,154 +1762,10 @@
           "fige": false,
           "heure_fige": null,
           "phase": "PREPARATION",
-          "confiance_donnees": 62.5,
-          "scores": [
-            {
-              "numero": 8,
-              "score": 37.144,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                37.14,
-                37.14
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 61.67,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 7,
-              "score": 34.166,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                34.17,
-                34.17
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 54.72,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 5,
-              "score": 31.633,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                31.63,
-                31.63
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 57.14,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 16.67,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 4,
-              "score": 15.999,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                16.0,
-                16.0
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 37.33,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 3,
-              "score": 10.286,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                10.29,
-                10.29
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 24.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            }
-          ],
-          "raison": "Couverture sportive insuffisante : 5/8 chevaux évaluables",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_forme",
-              "chevaux": 3
-            },
-            {
-              "champ": "score_performances",
-              "chevaux": 3
-            },
-            {
-              "champ": "taux_victoire",
-              "chevaux": 3
-            }
-          ],
+          "confiance_donnees": 0,
+          "scores": [],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -4106,7 +1774,7 @@
         {
           "moteur": "M2",
           "specialite": "Aptitude et conditions",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -4117,21 +1785,8 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_aptitude",
-              "chevaux": 8
-            },
-            {
-              "champ": "score_distance",
-              "chevaux": 8
-            },
-            {
-              "champ": "score_terrain",
-              "chevaux": 8
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -4140,7 +1795,7 @@
         {
           "moteur": "M3",
           "specialite": "Engagement et opposition",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -4151,21 +1806,8 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_classe",
-              "chevaux": 8
-            },
-            {
-              "champ": "score_competition",
-              "chevaux": 8
-            },
-            {
-              "champ": "score_engagement",
-              "chevaux": 8
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -4174,7 +1816,7 @@
         {
           "moteur": "M4",
           "specialite": "Entourage et potentiel",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -4185,21 +1827,8 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_entourage",
-              "chevaux": 8
-            },
-            {
-              "champ": "score_entraineur",
-              "chevaux": 8
-            },
-            {
-              "champ": "score_jockey",
-              "chevaux": 8
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -4208,7 +1837,7 @@
         {
           "moteur": "M5",
           "specialite": "Régularité et risques",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -4217,154 +1846,10 @@
           "fige": false,
           "heure_fige": null,
           "phase": "PREPARATION",
-          "confiance_donnees": 62.5,
-          "scores": [
-            {
-              "numero": 8,
-              "score": 47.778,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                47.78,
-                47.78
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 61.67,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 7,
-              "score": 46.62,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                46.62,
-                46.62
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 54.72,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 5,
-              "score": 40.082,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                40.08,
-                40.08
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 16.67,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 66.67,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 57.14,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 4,
-              "score": 26.222,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                26.22,
-                26.22
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 60.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 37.33,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 3,
-              "score": 12.333,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                12.33,
-                12.33
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 25.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 24.0,
-                  "poids": 1
-                }
-              ]
-            }
-          ],
-          "raison": "Couverture sportive insuffisante : 5/8 chevaux évaluables",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_fiabilite",
-              "chevaux": 3
-            },
-            {
-              "champ": "score_forme",
-              "chevaux": 3
-            },
-            {
-              "champ": "score_regularite",
-              "chevaux": 3
-            }
-          ],
+          "confiance_donnees": 0,
+          "scores": [],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -4383,373 +1868,16 @@
       "depart_paris": "2026-10-27T14:30:00+01:00",
       "partants_annonces": null,
       "partants_verifies": 12,
-      "controle": "PROGRAMME_VERIFIE",
+      "controle": "EXCLU",
       "collecte_paris": null,
-      "anomalies": [],
+      "anomalies": [
+        "Départ passé : aucun pronostic rétroactif"
+      ],
       "moteurs": [
         {
           "moteur": "M1",
           "specialite": "Forme et performances",
-          "qualification": "🟢 RETENU",
-          "validation": true,
-          "gagnant_espere": 7,
-          "meilleur_place": 1,
-          "ordre_arrivee_espere": [
-            7,
-            1,
-            9,
-            6,
-            3
-          ],
-          "pari_retenu": null,
-          "fige": false,
-          "heure_fige": null,
-          "phase": "PRE_VERROU",
-          "confiance_donnees": 100.0,
-          "scores": [
-            {
-              "numero": 7,
-              "score": 49.047,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                49.05,
-                49.05
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 68.61,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 25.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 1,
-              "score": 46.906,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                46.91,
-                46.91
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 67.78,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 9,
-              "score": 45.954,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                45.95,
-                45.95
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 65.56,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 6,
-              "score": 38.213,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                38.21,
-                38.21
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 43.33,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 25.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 3,
-              "score": 28.929,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                28.93,
-                28.93
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 42.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 11,
-              "score": 25.954,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                25.95,
-                25.95
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 48.06,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 2,
-              "score": 25.953,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                25.95,
-                25.95
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 31.39,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 4,
-              "score": 21.547,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                21.55,
-                21.55
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 21.11,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 10,
-              "score": 21.311,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                21.31,
-                21.31
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 33.06,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 5,
-              "score": 12.976,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                12.98,
-                12.98
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 13.61,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 12.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 8,
-              "score": 11.906,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                11.91,
-                11.91
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 27.78,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 12,
-              "score": 9.763,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                9.76,
-                9.76
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 22.78,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_performances",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "taux_victoire",
-                  "valeur": 0.0,
-                  "poids": 1
-                }
-              ]
-            }
-          ],
-          "raison": "Classement heuristique traçable, écart 2.14/100 ; FIGÉ à créer par figes_secure.py",
-          "indicateurs_manquants": [],
-          "robustesse": 66.7,
-          "ecart_tete": 2.141,
-          "alertes": [
-            "Favori sensible au retrait d’un indicateur",
-            "Offres PMU non renseignées"
-          ],
-          "scenarios": [
-            {
-              "sans": "score_forme",
-              "premier": 6,
-              "stable": false
-            },
-            {
-              "sans": "score_performances",
-              "premier": 7,
-              "stable": true
-            },
-            {
-              "sans": "taux_victoire",
-              "premier": 7,
-              "stable": true
-            }
-          ]
-        },
-        {
-          "moteur": "M2",
-          "specialite": "Aptitude et conditions",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -4760,21 +1888,29 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_aptitude",
-              "chevaux": 12
-            },
-            {
-              "champ": "score_distance",
-              "chevaux": 12
-            },
-            {
-              "champ": "score_terrain",
-              "chevaux": 12
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
+          "robustesse": null,
+          "ecart_tete": null,
+          "alertes": [],
+          "scenarios": []
+        },
+        {
+          "moteur": "M2",
+          "specialite": "Aptitude et conditions",
+          "qualification": "🔴 EXCLU",
+          "validation": false,
+          "gagnant_espere": null,
+          "meilleur_place": null,
+          "ordre_arrivee_espere": [],
+          "pari_retenu": null,
+          "fige": false,
+          "heure_fige": null,
+          "phase": "PREPARATION",
+          "confiance_donnees": 0,
+          "scores": [],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -4783,7 +1919,7 @@
         {
           "moteur": "M3",
           "specialite": "Engagement et opposition",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -4794,21 +1930,8 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_classe",
-              "chevaux": 12
-            },
-            {
-              "champ": "score_competition",
-              "chevaux": 12
-            },
-            {
-              "champ": "score_engagement",
-              "chevaux": 12
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -4817,7 +1940,7 @@
         {
           "moteur": "M4",
           "specialite": "Entourage et potentiel",
-          "qualification": "🟡 EN ÉTUDE",
+          "qualification": "🔴 EXCLU",
           "validation": false,
           "gagnant_espere": null,
           "meilleur_place": null,
@@ -4828,21 +1951,8 @@
           "phase": "PREPARATION",
           "confiance_donnees": 0,
           "scores": [],
-          "raison": "Aucun indicateur sportif chiffré disponible",
-          "indicateurs_manquants": [
-            {
-              "champ": "score_entourage",
-              "chevaux": 12
-            },
-            {
-              "champ": "score_entraineur",
-              "chevaux": 12
-            },
-            {
-              "champ": "score_jockey",
-              "chevaux": 12
-            }
-          ],
+          "raison": "Départ passé : aucun pronostic rétroactif",
+          "indicateurs_manquants": [],
           "robustesse": null,
           "ecart_tete": null,
           "alertes": [],
@@ -4851,361 +1961,23 @@
         {
           "moteur": "M5",
           "specialite": "Régularité et risques",
-          "qualification": "🟢 RETENU",
-          "validation": true,
-          "gagnant_espere": 9,
-          "meilleur_place": 7,
-          "ordre_arrivee_espere": [
-            9,
-            7,
-            1,
-            6,
-            3
-          ],
+          "qualification": "🔴 EXCLU",
+          "validation": false,
+          "gagnant_espere": null,
+          "meilleur_place": null,
+          "ordre_arrivee_espere": [],
           "pari_retenu": null,
           "fige": false,
           "heure_fige": null,
-          "phase": "PRE_VERROU",
-          "confiance_donnees": 100.0,
-          "scores": [
-            {
-              "numero": 9,
-              "score": 63.01,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                63.01,
-                63.01
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 100.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 65.56,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 7,
-              "score": 59.352,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                59.35,
-                59.35
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 87.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 68.61,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 1,
-              "score": 59.213,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                59.21,
-                59.21
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 87.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 67.78,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 6,
-              "score": 55.138,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                55.14,
-                55.14
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 37.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 87.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 43.33,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 3,
-              "score": 44.583,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                44.58,
-                44.58
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 75.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 42.5,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 2,
-              "score": 38.565,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                38.56,
-                38.56
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 62.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 31.39,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 11,
-              "score": 35.093,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                35.09,
-                35.09
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 62.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 48.06,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 4,
-              "score": 32.685,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                32.69,
-                32.69
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 25.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 50.0,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 21.11,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 10,
-              "score": 32.593,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                32.59,
-                32.59
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 62.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 33.06,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 8,
-              "score": 25.463,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                25.46,
-                25.46
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 62.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 27.78,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 12,
-              "score": 24.63,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                24.63,
-                24.63
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 0.0,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 62.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 22.78,
-                  "poids": 1
-                }
-              ]
-            },
-            {
-              "numero": 5,
-              "score": 21.018,
-              "couverture": 1.0,
-              "intervalle_donnees": [
-                21.02,
-                21.02
-              ],
-              "preuves": [
-                {
-                  "indicateur": "score_regularite",
-                  "valeur": 12.5,
-                  "poids": 3
-                },
-                {
-                  "indicateur": "score_fiabilite",
-                  "valeur": 37.5,
-                  "poids": 2
-                },
-                {
-                  "indicateur": "score_forme",
-                  "valeur": 13.61,
-                  "poids": 1
-                }
-              ]
-            }
-          ],
-          "raison": "Classement heuristique traçable, écart 3.66/100 ; FIGÉ à créer par figes_secure.py",
+          "phase": "PREPARATION",
+          "confiance_donnees": 0,
+          "scores": [],
+          "raison": "Départ passé : aucun pronostic rétroactif",
           "indicateurs_manquants": [],
-          "robustesse": 66.7,
-          "ecart_tete": 3.658,
-          "alertes": [
-            "Favori sensible au retrait d’un indicateur",
-            "Offres PMU non renseignées"
-          ],
-          "scenarios": [
-            {
-              "sans": "score_regularite",
-              "premier": 9,
-              "stable": true
-            },
-            {
-              "sans": "score_fiabilite",
-              "premier": 7,
-              "stable": false
-            },
-            {
-              "sans": "score_forme",
-              "premier": 9,
-              "stable": true
-            }
-          ]
+          "robustesse": null,
+          "ecart_tete": null,
+          "alertes": [],
+          "scenarios": []
         }
       ]
     },
