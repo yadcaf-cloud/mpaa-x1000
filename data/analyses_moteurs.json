@@ -2,12 +2,12 @@
   "logiciel": "MPAA X1000 FUSION",
   "schema_version": 3,
   "date": "2026-11-13",
-  "analyse_effectuee_paris": "2026-11-13T09:06:16.226657+01:00",
+  "analyse_effectuee_paris": "2026-11-13T10:23:03.740519+01:00",
   "source_programme": "https://online.turfinfo.api.pmu.fr/rest/client/1/programme/13112026",
   "statut": "PRONOSTICS_CALCULES",
   "explication": "Pré-verrous calculés ; aucun FIGÉ créé par ce script.",
   "nombre_courses": 49,
-  "nombre_pronostics": 66,
+  "nombre_pronostics": 64,
   "nombre_figes": 0,
   "diagnostic": {
     "refus_par_motif": [
@@ -22,6 +22,10 @@
       {
         "motif": "Couverture sportive insuffisante : 9/10 chevaux évaluables",
         "nombre": 4
+      },
+      {
+        "motif": "Délai insuffisant pour un FIGÉ avant départ",
+        "nombre": 2
       },
       {
         "motif": "Tête indécise : écart 0.32/100",
@@ -65,10 +69,6 @@
       },
       {
         "motif": "Tête indécise : écart 0.23/100",
-        "nombre": 1
-      },
-      {
-        "motif": "Tête indécise : écart 0.57/100",
         "nombre": 1
       }
     ],
@@ -151,21 +151,15 @@
         {
           "moteur": "M1",
           "specialite": "Forme et performances",
-          "qualification": "🟢 RETENU",
-          "validation": true,
-          "gagnant_espere": 2,
-          "meilleur_place": 7,
-          "ordre_arrivee_espere": [
-            2,
-            7,
-            3,
-            4,
-            6
-          ],
+          "qualification": "🟡 EN ÉTUDE",
+          "validation": false,
+          "gagnant_espere": null,
+          "meilleur_place": null,
+          "ordre_arrivee_espere": [],
           "pari_retenu": null,
           "fige": false,
           "heure_fige": null,
-          "phase": "PRE_VERROU",
+          "phase": "PREPARATION",
           "confiance_donnees": 100.0,
           "scores": [
             {
@@ -351,13 +345,11 @@
               ]
             }
           ],
-          "raison": "Classement heuristique traçable, écart 13.15/100 ; FIGÉ à créer par figes_secure.py",
+          "raison": "Délai insuffisant pour un FIGÉ avant départ",
           "indicateurs_manquants": [],
           "robustesse": 100.0,
           "ecart_tete": 13.146,
-          "alertes": [
-            "Offres PMU non renseignées"
-          ],
+          "alertes": [],
           "scenarios": [
             {
               "sans": "score_forme",
@@ -481,21 +473,15 @@
         {
           "moteur": "M5",
           "specialite": "Régularité et risques",
-          "qualification": "🟢 RETENU",
-          "validation": true,
-          "gagnant_espere": 2,
-          "meilleur_place": 7,
-          "ordre_arrivee_espere": [
-            2,
-            7,
-            3,
-            4,
-            6
-          ],
+          "qualification": "🟡 EN ÉTUDE",
+          "validation": false,
+          "gagnant_espere": null,
+          "meilleur_place": null,
+          "ordre_arrivee_espere": [],
           "pari_retenu": null,
           "fige": false,
           "heure_fige": null,
-          "phase": "PRE_VERROU",
+          "phase": "PREPARATION",
           "confiance_donnees": 100.0,
           "scores": [
             {
@@ -681,13 +667,11 @@
               ]
             }
           ],
-          "raison": "Classement heuristique traçable, écart 9.56/100 ; FIGÉ à créer par figes_secure.py",
+          "raison": "Délai insuffisant pour un FIGÉ avant départ",
           "indicateurs_manquants": [],
           "robustesse": 100.0,
           "ecart_tete": 9.557,
-          "alertes": [
-            "Offres PMU non renseignées"
-          ],
+          "alertes": [],
           "scenarios": [
             {
               "sans": "score_regularite",
